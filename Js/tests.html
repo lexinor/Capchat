@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <input id="1" onblur="SameStr()"><p id="msg1"></p>
+        <input id="2" onblur="SameStr()"><p id="msg2" ></p>
+        <button id="sub" type="submit" onsubmit="return isSame()">Tests</button>
+    </form>
+
+    <script>
+        function isSame(){
+            var input1 = document.getElementById("1").textContent;
+            var input2 = document.getElementById("2").textContent;
+            var btn = document.getElementById("sub");
+
+
+            if (input1 != input2)
+                btn.display = "none";
+            else
+                btn.style.display = "block";
+        }
+    </script>
+</body>
+</html>
