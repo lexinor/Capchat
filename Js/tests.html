@@ -6,22 +6,21 @@
 </head>
 <body>
     <form>
-        <input id="1" onblur="SameStr()"><p id="msg1"></p>
-        <input id="2" onblur="SameStr()"><p id="msg2" ></p>
-        <button id="sub" type="submit" onsubmit="return isSame()">Tests</button>
+        <input id="1" onblur="isSame()"><p id="msg1"></p>
+        <input id="2" onblur="isSame()"><p id="msg2" ></p>
+        <button id="sub" type="submit" disabled>Tests</button>
     </form>
 
     <script>
         function isSame(){
-            var input1 = document.getElementById("1").textContent;
-            var input2 = document.getElementById("2").textContent;
+            var input1 = document.getElementById("1").text;
+            var input2 = document.getElementById("2").text;
             var btn = document.getElementById("sub");
 
-
-            if (input1 != input2)
-                btn.display = "none";
+            if(input1 == input2)
+                btn.disabled = false;
             else
-                btn.style.display = "block";
+                btn.disabled = true;
         }
     </script>
 </body>
