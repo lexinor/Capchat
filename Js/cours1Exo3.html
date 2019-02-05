@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cours 1 Exo 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<script type="text/javascript">
+    // Correction
+    /*function initList(object) {
+        var year = object.valueAsDate.getFullYear();
+        var select = document.getElementById("year");
+        select.options.length = 0; // Vide la liste
+
+        for(var i = year; i >= year-9;i++)
+        {
+            var option = document.createElement("option");
+            option.textContent = i;
+
+        }
+
+    }*/
+    function GetDates() {
+        var date = document.getElementById("inputD");
+        var yearInput = document.getElementById("year");
+
+        var annee = date.substr(6,4);
+        console.log(annee);
+        for(var i = annee; i >= annee-10;i++)
+        {
+            var option = document.createElement("option");
+            option.textContent = i;
+            yearInput.add(option,0);
+        }
+    }
+</script>
+<body>
+<input id="inputD" onBlur="GetDates()" placeholder="DD/MM/YYYY">
+<select id="year" >
+</select>
+
+</body>
+</html>
