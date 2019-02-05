@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<style>
+    #can{
+        color: forestgreen;
+        border-style: solid;
+    }
+</style>
+<body>
+<canvas id="can" width="1200" height="700">
+    Désolé, votre navigateur ne support pas l'élément canvas
+</canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("can");
+    var context = canvas.getContext("2d");
+
+    // Dessiner un carré sans forme géometrique
+    context.beginPath();
+    context.moveTo(50,50);
+    context.lineTo(100,50);
+    context.lineTo(100,100);
+    context.lineTo(50,100);
+    context.lineTo(50,50);
+    context.stroke();
+
+    // Dessiner un rectangle sans forme géométrique
+    context.beginPath();
+    context.moveTo(50,150);
+    context.lineTo(100,200);
+    context.lineTo(50,200);
+    context.lineTo(50,150);
+    context.fill();
+    context.stroke();
+
+    // Dessiner une ligne pleine
+    context.beginPath();
+    context.moveTo(50,220);
+    context.lineTo(50,250);
+    context.lineWidth = 10;
+    context.strokeStyle = "#ff99ff";
+    context.lineCap = "round";
+    //context.lineCap = "square";
+    context.stroke();
+</script>
+</body>
+</html>
