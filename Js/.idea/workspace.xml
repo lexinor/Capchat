@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/copiePixel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/captcha.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Horloge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Horloge.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +23,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/copiePixel.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+            <state>
+              <caret lean-forward="true" selection-end-line="8" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/captcha.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Horloge.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -53,9 +72,10 @@
         <option value="$PROJECT_DIR$/canvas.html" />
         <option value="$PROJECT_DIR$/dessinsLignes.html" />
         <option value="$PROJECT_DIR$/Dessins2.html" />
-        <option value="$PROJECT_DIR$/Horloge.html" />
         <option value="$PROJECT_DIR$/pixelFlag.html" />
         <option value="$PROJECT_DIR$/copiePixel.html" />
+        <option value="$PROJECT_DIR$/captcha.html" />
+        <option value="$PROJECT_DIR$/Horloge.html" />
       </list>
     </option>
   </component>
@@ -171,11 +191,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549362272632</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Copie d'une image">
+      <created>1549364005239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1549364005239</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17561000" />
+    <option name="totallyTimeSpent" value="18251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -211,7 +238,8 @@
     <MESSAGE value="Premier cours Canvas HTML5 + JS" />
     <MESSAGE value="Dessin Lignes" />
     <MESSAGE value="Ajout cours dessins par pixel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout cours dessins par pixel" />
+    <MESSAGE value="Copie d'une image" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copie d'une image" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/AjouterOptions.html">
@@ -269,13 +297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Horloge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="76" lean-forward="true" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pixelFlag.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -285,8 +306,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/copiePixel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        <state>
+          <caret lean-forward="true" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captcha.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Horloge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
         </state>
       </provider>
     </entry>
