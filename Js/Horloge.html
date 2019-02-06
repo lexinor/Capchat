@@ -20,6 +20,25 @@
 </canvas>
 <script type="text/javascript">
     // Créer un pendule
+    let can = document.getElementById("can");
+    let ctx = can.getContext("2d");
+
+    window.onload=function DrawClock()
+    {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+
+        ctx.fillText(h + ":" + m + ":" + s, 50, 100);
+
+        setTimeout(function(){60000});
+
+        /*ctx.beginPath();
+        ctx.arc(100,150,30,0,Math.PI);
+        ctx.lineWidth = 5;
+        ctx.stroke();*/
+    }
 </script>
 </body>
 </html>
