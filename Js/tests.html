@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bac à sable JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
+
+<style>
+    #can{
+        color: blue;
+        border-style: solid;
+    }
+</style>
 <body>
-    <form>
-        <input id="1" onblur="isSame()"><p id="msg1"></p>
-        <input id="2" onblur="isSame()"><p id="msg2" ></p>
-        <button id="sub" type="submit" disabled>Tests</button>
-    </form>
+    <canvas id="can" width="700" height="700">
+        Désolé, votre navigateur ne support pas l'élément canvas
+    </canvas>
 
-    <script>
-        function isSame(){
-            var input1 = document.getElementById("1").text;
-            var input2 = document.getElementById("2").text;
-            var btn = document.getElementById("sub");
+    <script type="text/javascript">
+        var can = document.getElementById("can");
+        var ctx = can.getContext("2d");
 
-            if(input1 == input2)
-                btn.disabled = false;
-            else
-                btn.disabled = true;
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+
+        ctx.translate(350,350);
+        var radius = 200;
+
+        ctx.beginPath();
+        ctx.arc(0,0,radius,0,2*Math.PI);
+        ctx.stroke();
+
+        DrawChiffres();
+
+
+
+        function DrawChiffres() {
+            for (var i = 1; i < 13; i++)
+            {
+                ctx.beginPath();
+                ctx.strokeText(i,0,-radius+30);
+                ctx.moveTo(0,0);
+                ctx.lineTo(0,-radius+30);
+                ctx.stroke();
+                ctx.rotate(30 * Math.PI / 180);
+            }
         }
     </script>
 </body>
