@@ -23,22 +23,77 @@
     let can = document.getElementById("can");
     let ctx = can.getContext("2d");
 
-    window.onload=function DrawClock()
-    {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var radius = 150;
+    ctx.translate(radius,radius);
 
-        ctx.fillText(h + ":" + m + ":" + s, 50, 100);
+    setInterval(ShowTime,1000);
+    setInterval(CreateAiguilles,1000);
 
-        setTimeout(function(){60000});
+    window.onload=function DrawHorloge() {
 
-        /*ctx.beginPath();
-        ctx.arc(100,150,30,0,Math.PI);
-        ctx.lineWidth = 5;
-        ctx.stroke();*/
+        ctx.beginPath();
+        ctx.arc(0,0,radius,0,Math.PI*2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(0,0,2,0,Math.PI*2);
+        ctx.stroke();
+
+        DrawChiffres();
     }
+
+    function DrawChiffres() {
+
+        for (var i = 1 ; i < 13;i++)
+        {
+            ctx.moveTo(0,0);
+            ctx.rotate(i*Math.PI/6);
+            ctx.fillText(i,-8,-radius*0.9);
+            ctx.rotate(-(i*Math.PI/6));
+        }
+    }
+
+    function ShowTime() {
+
+        ctx.clearRect(200,175,50,50);
+        ctx.fillText(h + ":" + m + ":" + s,200,200);
+
+    }
+
+    function CreateAiguilles() {
+        //DrawAiguilleH();
+        DrawAiguilleM();
+        //DrawAiguilleS();
+    }
+
+    function DrawAiguilleH() {
+        ctx.moveTo(0,0);
+        ctx.rotate(h*Math.PI/6 + m*Math.PI/(6*60) + s*Math.PI/(6*60*60));
+        ctx.lineTo(0,-radius*0.8);
+        ctx.stroke();
+        ctx.rotate(-(h*Math.PI/6 + m*Math.PI/(6*60) + s*Math.PI/(6*60*60)));
+    }
+
+    function DrawAiguilleM() {
+        ctx.moveTo(0,0);
+        ctx.rotate(m*Math.PI/(30*60) + s*Math.PI/(30*60*60));
+        ctx.lineTo(0,-radius*0.6);
+        ctx.stroke();
+        ctx.rotate(-( m*Math.PI/(30*60)));
+    }
+
+    function DrawAiguilleS() {
+        ctx.moveTo(0,0);
+        ctx.rotate(s*Math.PI/(30*60*60));
+        ctx.lineTo(0,-radius*0.9);
+        ctx.stroke();
+        ctx.rotate(-(s*Math.PI/(30*60*60)));
+    }
+
 </script>
 </body>
 </html>
