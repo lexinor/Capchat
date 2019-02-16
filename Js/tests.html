@@ -23,32 +23,72 @@
         var can = document.getElementById("can");
         var ctx = can.getContext("2d");
 
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-
         ctx.translate(350,350);
         var radius = 200;
 
-        ctx.beginPath();
-        ctx.arc(0,0,radius,0,2*Math.PI);
-        ctx.stroke();
-
-        DrawChiffres();
+        setInterval(DrawClock,1000);
+        setInterval(DrawTime,1000);
 
 
+        function DrawClock() {
+            ctx.beginPath();
+            ctx.arc(0,0,radius,0,2*Math.PI);
+            ctx.stroke();
 
+            ctx.beginPath();
+            ctx.arc(0,0,radius*0.1,0,2*Math.PI);
+            ctx.stroke();
+
+            DrawChiffres();
+        }
         function DrawChiffres() {
             for (var i = 1; i < 13; i++)
             {
-                ctx.beginPath();
-                ctx.strokeText(i,0,-radius+30);
+               ctx.beginPath();
                 ctx.moveTo(0,0);
-                ctx.lineTo(0,-radius+30);
+                ctx.rotate(i * Math.PI/6);
+                ctx.strokeText(i,-4,-radius*0.85);
                 ctx.stroke();
-                ctx.rotate(30 * Math.PI / 180);
+                ctx.rotate(-(i * Math.PI/6));
             }
+        }
+
+        function drawAiguille(time,taille, width) {
+            ctx.beginPath();
+            ctx.lineWidth = width;
+            ctx.lineCap = "round";
+            ctx.moveTo(0,0);
+            ctx.rotate(time)
+            ctx.lineTo(0,taille);
+            ctx.stroke();
+            ctx.rotate(-(time));
+        }
+
+        function DrawTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+
+            // heures
+            var heures = h % 12;
+            heures = (h * Math.PI/6)+(m * Math.PI/(6*60))+(s * Math.PI/(360*60));
+            drawAiguille(heures,radius*0.6,20);
+
+            // minutes
+            var minutes = (m * Math.PI/30)+(s * Math.PI/(30*60));
+            drawAiguille(minutes,radius*0.7,10);
+
+            // secondes
+            var secondes = (s * Math.PI/30);
+            drawAiguille(secondes,radius*0.9,5);
+        }
+
+        function ClearClock() {
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.clearRect(-200,-200,500,500);
+            ctx.stroke();
         }
     </script>
 </body>
