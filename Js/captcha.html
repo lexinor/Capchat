@@ -14,6 +14,7 @@
     </style>
 </head>
 <body onload="DrawCode();">
+<p id="cpt"></p>
 <canvas id="can" width="200" height="100">
     Désolé, votre navigateur ne support pas l'élément canvas
 </canvas><br/>
@@ -27,6 +28,10 @@
     let can = document.getElementById("can");
     let ctx = can.getContext("2d");
     let code = "";
+    let compteur = 30;
+
+    AffichageCompteur();
+    setInterval(Compteur,1000);
     
     function DrawCode() {
         code = GenerateCode();
@@ -72,14 +77,23 @@
         return generatedCode;
     }
 
-    function Timer(duree) {
-        duree
-
+    function AffichageCompteur() {
+        document.getElementById("cpt").textContent = "Il vous reste " + compteur + " secondes pour répondre au captcha";
     }
-
-
-
-
+    
+    function Compteur() {
+        if(compteur > 0)
+        {
+            AffichageCompteur();
+            compteur -= 1;
+            AffichageCompteur();
+        }
+        else
+        {
+            compteur = 30;
+            DrawCode();
+        }
+    }
 </script>
 </body>
 </html>
