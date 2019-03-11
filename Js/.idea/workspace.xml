@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ProjetCapChat/indices.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/captcha.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/captcha.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat amoureux.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat bien coiffé.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat borgne.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat chapeauté.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat cosmonaute.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat cyclope.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat licorne.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat malade.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat moustachu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat myope.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat pirate.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat plongeur.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat princesse.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/singuliers/chat titi parisien.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,19 +30,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests.html">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="590">
+              <caret line="56" selection-start-line="56" selection-end-line="59" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="53" column="69" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pixelFlag.html">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+            <state relative-caret-position="221">
+              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -34,35 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Horloge.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
+            <state relative-caret-position="658">
               <caret line="47" selection-start-line="47" selection-end-line="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dessinsLignes.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/captcha.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -98,6 +96,8 @@
         <option value="$PROJECT_DIR$/ProjetCapChat/singuliers/Indices.txt" />
         <option value="$PROJECT_DIR$/ProjetCapChat/indices.js" />
         <option value="$PROJECT_DIR$/ProjetCapChat/index.html" />
+        <option value="$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js" />
+        <option value="$PROJECT_DIR$/ProjetCapChat/captcha.js" />
       </list>
     </option>
   </component>
@@ -108,9 +108,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-7" />
+    <option name="width" value="980" />
+    <option name="height" value="1167" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -129,12 +129,6 @@
               <item name="Js" type="b2602c69:ProjectViewProjectNode" />
               <item name="Js" type="462c0819:PsiDirectoryNode" />
               <item name="ProjetCapChat" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Js" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Js" type="462c0819:PsiDirectoryNode" />
-              <item name="ProjetCapChat" type="462c0819:PsiDirectoryNode" />
-              <item name="singuliers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,6 +181,7 @@
       <workItem from="1550573131979" duration="4018000" />
       <workItem from="1550582714177" duration="616000" />
       <workItem from="1550584419635" duration="1663000" />
+      <workItem from="1552327503921" duration="11703000" />
     </task>
     <task id="LOCAL-00001" summary="Added correction for cours1Exo1">
       <created>1549351582403</created>
@@ -265,11 +260,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550338752027</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Changed size for neutres images. We display neutres images within the canvas">
+      <created>1551976448325</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1551976448325</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59836000" />
+    <option name="totallyTimeSpent" value="74003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -287,7 +289,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" visible="true" weight="0.19934994" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" visible="true" weight="0.19826652" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005208" side_tool="true" weight="0.32910052" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -313,7 +315,8 @@
     <MESSAGE value="Début création Horloge" />
     <MESSAGE value="Corrigé" />
     <MESSAGE value="Created Captcha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Captcha" />
+    <MESSAGE value="Changed size for neutres images. We display neutres images within the canvas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed size for neutres images. We display neutres images within the canvas" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ChangerOptionListe.html" />
@@ -368,17 +371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -388,24 +384,10 @@
     <entry file="file://$PROJECT_DIR$/AccesContenu.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pixelFlag.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Horloge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
@@ -418,15 +400,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/captcha.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjetCapChat/indices.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="788">
+          <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -437,10 +412,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/filemodule.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/ServerJs.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/indices.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Horloge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+        <state relative-caret-position="221">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="56" selection-start-line="56" selection-end-line="59" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="53" column="69" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
         </state>
       </provider>
     </entry>

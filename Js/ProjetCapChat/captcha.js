@@ -1,60 +1,58 @@
 let body = document.body;
-// On créer 9 Canvas et on leur met un attribut onclick
-function CreateCanvas() {
-    let count = 0;
-    let selectedImages = GetRandomImg();
 
-    for (var i = 1; i < 10;i++)
+function InitCaptcha() {
+    let count = 0;
+    let selectedImg = SelectRandImg();
+    for (let i = 1; i < 10;i++)
     {
-        let newCan = document.createElement("canvas");
-        let attr = document.createAttribute('onclick');
+        let img = document.createElement("img");
+        let attr = document.createAttribute("onclick");
         attr.value = "IsSelectedImgGood(this);";
-        newCan.setAttributeNode(attr);
-        newCan.width = 70;
-        newCan.height = 70;
-        newCan.id = "can" + i;
-        body.appendChild(newCan);
+        img.setAttributeNode(attr);
+
+        img.id = "img" + i;
+        img.width = 100;
+        img.height = 100;
+        let randImg = Math.floor(Math.random() * selectedImg.length);
+        img.src = selectedImg[randImg];
+        selectedImg.splice(randImg,1);
+        body.appendChild(img);
         count += 1;
         if(count == 3){
             var br = document.createElement('br');
             body.appendChild(br);
             count = 0;
         }
-        AddImageToCanvas(newCan.id, selectedImages);
     }
 }
 
-// On essaye d'ajouter les images dans les canvas
-function AddImageToCanvas(canId, selectedImages) {
-    let can = document.getElementById(canId);
-    let currentCtx = can.getContext('2d');
-    currentCtx.translate(0,0);
+function SelectRandImg() {
+    let imgArray = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+    let randSing = Math.floor(Math.random() * 13);
 
-    let img = new Image(50,50);
-    img.src = "./neutres/" + selectedImages[0] + ".jpg";
-    currentCtx.drawImage(img,0,0);
-    selectedImages.splice(0,1);
-}
+    let selectedImgUrl = [];
 
-function GetRandomImg() {
-    let idImgTab = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-    let selectedImg = [];
-
-    for(let i = 0; i < 9; i ++)
-    {
-        let tabSize = idImgTab.length;
-        let randId = Math.floor(Math.random() * tabSize);
-        console.log("Tour : " + i);
-        console.log("nbChoisi : " + idImgTab[randId]);
-        selectedImg.push(idImgTab[randId]);
-        console.log("idImgTab : " + idImgTab);
-        console.log("selectedImgTab : " + selectedImg);
-        idImgTab.splice(randId,1);
+    for(let i = 0; i < 9; i++){
+        if(i == 0){
+            selectedImgUrl.push("./singuliers/" + imgArray[randSing] + ".jpg");
+            imgArray.splice(randSing, 1);
+        }
+        else {
+            let randImg = Math.floor(Math.random() * imgArray.length);
+            selectedImgUrl.push("./neutres/" + randImg + ".jpg");
+            imgArray.splice(randImg, 1);
+        }
     }
-    return selectedImg;
+    return selectedImgUrl;
 }
 
 function IsSelectedImgGood(img) {
-    var id = img.getAttribute('id');
-    window.alert('Image ' + id);
+    let id = img.getAttribute('id');
+    let imgUrl = img.src;
+
+    if(imgUrl.includes("singuliers")){
+        setTimeout(function(){ alert("Bien joué"); location.reload();}, 1);
+    }
+    else
+        window.alert("Raté ! Essaye encore :) !");
 }
