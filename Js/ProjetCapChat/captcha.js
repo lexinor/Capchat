@@ -1,4 +1,8 @@
 let body = document.body;
+let compteur = 30;
+
+AffichageCompteur();
+setInterval(Compteur,1000);
 
 function InitCaptcha() {
     let count = 0;
@@ -55,4 +59,22 @@ function IsSelectedImgGood(img) {
     }
     else
         window.alert("Raté ! Essaye encore :) !");
+}
+
+function AffichageCompteur() {
+    document.getElementById("cpt").textContent = "Il vous reste " + compteur + " secondes pour répondre au captcha";
+}
+
+function Compteur() {
+    if(compteur > 0)
+    {
+        AffichageCompteur();
+        compteur -= 1;
+        AffichageCompteur();
+    }
+    else
+    {
+        compteur = 30;
+        setTimeout(function(){ alert("Temps écoulé"); location.reload();}, 1);
+    }
 }
