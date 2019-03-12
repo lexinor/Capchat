@@ -1,4 +1,5 @@
-canvas{
-    border-style: dashed;
-    border-width: 1px;
+img:hover{
+    border-color: red;
+    border-width: thin;
+    border-style: dotted;
 }
