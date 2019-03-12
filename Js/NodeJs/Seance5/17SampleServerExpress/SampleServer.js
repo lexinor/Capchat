@@ -46,7 +46,7 @@ app.get('/listusers', function(req, res) {
             console.log('Nom : ', rows[row].username);//Ce n'est pas rigoureux au nivau du for each mais pourquoi ??
             res.write(rows[row].username+" ");
         }
-        res.end('Et c\' est tout');
+        res.end('\nEt c\' est tout');
         });
       });
 });
@@ -77,7 +77,7 @@ app.use('/static', express.static('public'));
 
 app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.status(404).send('Lieu inconnu :'+req.originalUrl);
+    res.status(404).send('Lieu inconnu : '+req.originalUrl);
 });
 
 app.listen(8080);
