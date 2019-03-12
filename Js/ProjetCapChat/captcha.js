@@ -13,7 +13,6 @@ function InitCaptcha() {
         let attr = document.createAttribute("onclick");
         attr.value = "IsSelectedImgGood(this);";
         img.setAttributeNode(attr);
-
         img.id = "img" + i;
         img.width = 100;
         img.height = 100;
@@ -55,8 +54,7 @@ function SelectRandImg() {
 
 function IsSelectedImgGood(img) {
 
-    var msg = document.getElementById('msg');
-    let id = img.getAttribute('id');
+    let msg = document.getElementById('msg');
     let imgUrl = img.src;
 
     if(imgUrl.includes("singuliers")){
@@ -92,8 +90,11 @@ function Compteur() {
     }
     else
     {
-        compteur = 30;
-        setTimeout(function(){ alert("Temps écoulé"); location.reload();}, 1);
+        let msg = document.getElementById('msg');
+        msg.style.color = "red";
+        msg.style.fontSize = "25px";
+        msg.textContent = "Temps écoulé !";
+        setTimeout(function(){ location.reload(); }, 1000);
     }
 }
 
@@ -113,5 +114,6 @@ function ReturnTips() {
     indices[11] = "Ce chat là a oublié de se faire vacciner contre la grippe";
     indices[12] = "Chaussez vos lunettes et montrez-moi le chat myope ?";
     indices[13] = "Après la fiancée du pirate, voici le chat du corsaire";
+
     return indices;
 }
