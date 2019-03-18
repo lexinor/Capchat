@@ -3,3 +3,14 @@ img:hover{
     border-width: thin;
     border-style: dotted;
 }
+
+#progressbar{
+    width: 30%;
+    background-color: darkred;
+}
+
+#bar{
+    width: 100%;
+    height: 30px;
+    background-color: red;
+}

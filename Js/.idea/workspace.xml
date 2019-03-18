@@ -5,7 +5,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjetCapChat/captcha.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/captcha.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjetCapChat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetCapChat/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/style.css" afterDir="false" />
     </list>
+    <ignored path="ProjetCapChat/neutres/0.jpg" />
+    <ignored path="ProjetCapChat/singuliers/0.jpg" />
+    <ignored path="ProjetCapChat/singuliers/1.jpg" />
+    <ignored path="ProjetCapChat/singuliers/10.jpg" />
+    <ignored path="ProjetCapChat/singuliers/11.jpg" />
+    <ignored path="ProjetCapChat/singuliers/12.jpg" />
+    <ignored path="ProjetCapChat/singuliers/13.jpg" />
+    <ignored path="ProjetCapChat/singuliers/2.jpg" />
+    <ignored path="ProjetCapChat/singuliers/3.jpg" />
+    <ignored path="ProjetCapChat/singuliers/4.jpg" />
+    <ignored path="ProjetCapChat/singuliers/5.jpg" />
+    <ignored path="ProjetCapChat/singuliers/6.jpg" />
+    <ignored path="ProjetCapChat/singuliers/7.jpg" />
+    <ignored path="ProjetCapChat/singuliers/8.jpg" />
+    <ignored path="ProjetCapChat/singuliers/9.jpg" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,20 +30,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="353">
+              <caret line="100" column="1" lean-forward="true" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+            <state relative-caret-position="17">
+              <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetCapChat/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -67,10 +92,10 @@
         <option value="$PROJECT_DIR$/captcha.html" />
         <option value="$PROJECT_DIR$/ProjetCapChat/singuliers/Indices.txt" />
         <option value="$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js" />
-        <option value="$PROJECT_DIR$/ProjetCapChat/style.css" />
         <option value="$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js" />
         <option value="$PROJECT_DIR$/ProjetCapChat/indices.js" />
         <option value="$PROJECT_DIR$/ProjetCapChat/index.html" />
+        <option value="$PROJECT_DIR$/ProjetCapChat/style.css" />
         <option value="$PROJECT_DIR$/ProjetCapChat/captcha.js" />
       </list>
     </option>
@@ -83,8 +108,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="width" value="980" />
+    <option name="height" value="1167" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,6 +194,11 @@
       <workItem from="1552381619477" duration="202000" />
       <workItem from="1552381930747" duration="9160000" />
       <workItem from="1552401799420" duration="2977000" />
+      <workItem from="1552756864085" duration="55000" />
+      <workItem from="1552756959325" duration="71000" />
+      <workItem from="1552861422925" duration="874000" />
+      <workItem from="1552864272697" duration="59000" />
+      <workItem from="1552939765822" duration="5265000" />
     </task>
     <task id="LOCAL-00001" summary="Added correction for cours1Exo1">
       <created>1549351582403</created>
@@ -279,12 +309,22 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89169000" />
+    <option name="totallyTimeSpent" value="96170000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14488935" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1691254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -296,7 +336,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" weight="0.19826652" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" visible="true" weight="0.1971831" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005208" side_tool="true" weight="0.32910052" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -310,6 +350,46 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added correction for cours1Exo1" />
@@ -432,34 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="56" selection-start-line="56" selection-end-line="59" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/captcha.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjetCapChat/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProjetCapChat/ServerJs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -475,17 +527,45 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjetCapChat/indices.js" />
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha_canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="56" selection-start-line="56" selection-end-line="59" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captcha.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/ServerJs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetCapChat/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ProjetCapChat/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProjetCapChat/captcha.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        <state relative-caret-position="353">
+          <caret line="100" column="1" lean-forward="true" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
         </state>
       </provider>
     </entry>

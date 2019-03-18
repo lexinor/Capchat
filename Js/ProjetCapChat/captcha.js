@@ -1,8 +1,10 @@
 let body = document.body;
 let compteur = 30;
+let width = 100;
 
 AffichageCompteur();
 setInterval(Compteur,1000);
+var prgbar = setInterval(frame,1000);
 
 function InitCaptcha() {
     let count = 0;
@@ -94,7 +96,19 @@ function Compteur() {
         msg.style.color = "red";
         msg.style.fontSize = "25px";
         msg.textContent = "Temps écoulé !";
-        setTimeout(function(){ location.reload(); }, 1000);
+        //setTimeout(function(){ location.reload(); }, 1000);
+    }
+}
+
+function frame() {
+    let bar = document.getElementById("bar");
+    if (width >= 0) {
+        width -= 3;
+        bar.style.width = width + '%';
+    }
+    else {
+        clearInterval(prgbar);
+        width = 100;
     }
 }
 
