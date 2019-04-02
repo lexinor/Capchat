@@ -29,7 +29,7 @@ app.get('/private', function(req, res) {
     res.sendFile( __dirname + "/private/" + "chatmyope.jpg" );
 });
 
-app.get('/listusers', function(req, res) {
+app.get('/users', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     var con = mysql.createConnection({
         host: "localhost",
@@ -73,7 +73,6 @@ res.status(200).end('Contact créé' );
 
 app.use(express.static('forms'));
 app.use('/static', express.static('public'));
-
 
 app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");

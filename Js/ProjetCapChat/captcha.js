@@ -4,7 +4,7 @@ let width = 100;
 
 AffichageCompteur();
 setInterval(Compteur,1000);
-var prgbar = setInterval(frame,1000);
+var prgbar = setInterval(ProgressBar,1000);
 
 function InitCaptcha() {
     let count = 0;
@@ -29,6 +29,15 @@ function InitCaptcha() {
             body.appendChild(br);
             count = 0;
         }
+    }
+}
+
+function Clear() {
+    for(let i = 1; i < 10;i++){
+        let imgId = "img"+i;
+        var img = document.getElementById(imgId);
+        document.body.removeChild(img);
+        document.getElementById('indice').innerHTML = "";
     }
 }
 
@@ -63,13 +72,15 @@ function IsSelectedImgGood(img) {
         msg.style.color = "green";
         msg.style.fontSize = "25px";
         msg.textContent = "Bien joué !";
-        setTimeout(function(){ location.reload(); }, 1000);
+        //setTimeout(function(){ location.reload(); }, 1000);
+        window.location.href = "D:/wamp64/www/coursweb/Js/ProjetCapChat/win.html";
     }
     else{
         msg.style.color = "red";
         msg.style.fontSize = "25px";
         msg.textContent = "Raté ! Essaye encore :) ! -3s";
         compteur -= 3;
+        width -= 3;
     }
 }
 
@@ -96,19 +107,28 @@ function Compteur() {
         msg.style.color = "red";
         msg.style.fontSize = "25px";
         msg.textContent = "Temps écoulé !";
-        //setTimeout(function(){ location.reload(); }, 1000);
+        setTimeout(function(){ location.reload(); }, 1000);
+        // clearInterval(cpt);
+        // if(compteur > 5){
+        //     compteur -= 5;
+        //     setInterval(Compteur,1000);
+        // }
     }
 }
 
-function frame() {
+function ProgressBar() {
     let bar = document.getElementById("bar");
     if (width >= 0) {
-        width -= 3;
+        width -= 3.3;
         bar.style.width = width + '%';
     }
     else {
         clearInterval(prgbar);
+        Clear();
         width = 100;
+        //compteur = 30;
+        //InitCaptcha();
+        //Compteur();
     }
 }
 
