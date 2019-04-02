@@ -1,0 +1,17 @@
+Ajouter un utilisateur dans la base
+1 - POST -> /users
+
+Lister tous les utilisateurs
+2 - GET -> /users
+
+Afficher un utilisateur grâce à son ID
+3 - GET -> /users/id
+
+Supprimer un utilisateur
+4 - DELETE -> /users/id
+
+FIlter les utilisateurs grâce à leur nom
+5 - GET -> /users/name=
+
+Modifie un utilisateur 
+6 - POST -> /users/id

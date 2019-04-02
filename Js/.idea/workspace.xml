@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ProjetCapChat/win.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccesContenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/AccesContenu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChangerOptionListe.html" beforeDir="false" afterPath="$PROJECT_DIR$/ChangerOptionListe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetCapChat/ServerJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/serverjs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetCapChat/captcha.js" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/captcha.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetCapChat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetCapChat/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="" />
     <ignored path="ProjetCapChat/neutres/0.jpg" />
     <ignored path="ProjetCapChat/singuliers/0.jpg" />
     <ignored path="ProjetCapChat/singuliers/1.jpg" />
@@ -37,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="91" column="68" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
+            <state relative-caret-position="123">
+              <caret line="90" column="27" lean-forward="true" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
               <folding>
                 <element signature="e#1108#1798#0" />
               </folding>
@@ -49,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/forms/contact.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" selection-start-column="20" selection-end-column="20" />
+            <state relative-caret-position="85">
+              <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -243,7 +234,7 @@
       <workItem from="1552981425198" duration="10792000" />
       <workItem from="1553868505519" duration="21000" />
       <workItem from="1554043734439" duration="1607000" />
-      <workItem from="1554189882497" duration="4821000" />
+      <workItem from="1554189882497" duration="6362000" />
     </task>
     <task id="LOCAL-00001" summary="Added correction for cours1Exo1">
       <created>1549351582403</created>
@@ -350,11 +341,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552396973766</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Started API Creation">
+      <created>1554195959662</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1554195959662</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115158000" />
+    <option name="totallyTimeSpent" value="116699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,8 +380,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" weight="0.1971831" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24377032" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005208" side_tool="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.24377032" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.50052685" side_tool="true" visible="true" weight="0.24377032" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -451,7 +449,8 @@
     <MESSAGE value="Changed CapChat version to use img instead of Canvas" />
     <MESSAGE value="Ajout dernière séance + images" />
     <MESSAGE value="Ajout de l'affichage de l'indice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de l'affichage de l'indice" />
+    <MESSAGE value="Started API Creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started API Creation" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ChangerOptionListe.html" />
@@ -646,15 +645,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/forms/contact.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        <state relative-caret-position="85">
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="91" column="68" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
+        <state relative-caret-position="123">
+          <caret line="90" column="27" lean-forward="true" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
           <folding>
             <element signature="e#1108#1798#0" />
           </folding>
