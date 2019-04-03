@@ -25,6 +25,7 @@ app.get('/batiment/:batimentnum/bureau', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.end('Vous êtes dans le batiment n°' + req.params.batimentnum);
 });
+
 app.get('/private', function(req, res) {
     res.sendFile( __dirname + "/private/" + "chatmyope.jpg" );
 });
@@ -46,7 +47,8 @@ app.get('/users', function(req, res) {
             console.log('Nom : ', rows[row].username);//Ce n'est pas rigoureux au nivau du for each mais pourquoi ??
             res.write(rows[row].username+" ");
         }
-        res.end('\nEt c\' est tout');
+        res.end('\n' +
+            'Et c\' est tout');
         });
       });
 });
