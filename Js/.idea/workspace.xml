@@ -1,7 +1,454 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="" />
+    <list default="true" id="d2c0f2c5-ecc1-4ccd-bfcc-e20edd277c7c" name="Default Changelist" comment="Started API Creation">
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/.bin/mime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/accepts/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/accepts/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/accepts/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/accepts/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/accepts/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/array-flatten/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/array-flatten/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/array-flatten/array-flatten.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/array-flatten/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/LICENCE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bignumber.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bignumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bignumber.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bignumber.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bignumber.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/doc/API.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bignumber.js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/lib/read.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/lib/types/json.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/lib/types/raw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/lib/types/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/body-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bytes/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bytes/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bytes/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bytes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/bytes/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-disposition/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-disposition/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-disposition/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-disposition/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-disposition/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-type/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-type/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-type/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-type/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/content-type/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie-signature/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie-signature/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie-signature/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie-signature/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie-signature/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/cookie/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/float.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/lib/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/core-util-is/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/lib/browser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/lib/compat/callsite-tostring.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/lib/compat/event-listener-count.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/lib/compat/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/depd/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/destroy/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/destroy/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/destroy/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/destroy/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ee-first/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ee-first/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ee-first/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ee-first/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/encodeurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/encodeurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/encodeurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/encodeurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/encodeurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/escape-html/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/escape-html/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/escape-html/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/escape-html/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/etag/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/etag/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/etag/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/etag/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/etag/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/express.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/middleware/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/middleware/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/router/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/router/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/lib/view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/express/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/finalhandler/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/finalhandler/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/finalhandler/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/finalhandler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/finalhandler/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/forwarded/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/forwarded/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/forwarded/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/forwarded/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/forwarded/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/fresh/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/fresh/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/fresh/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/fresh/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/fresh/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/http-errors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/http-errors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/http-errors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/http-errors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/http-errors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/Changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/dbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/dbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/sbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/sbcs-data-generated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/sbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/big5-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/cp936.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/cp949.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/cp950.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/eucjp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/gbk-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/tables/shiftjis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/utf16.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/encodings/utf7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/lib/bom-handling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/lib/extend-node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/lib/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/lib/streams.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/iconv-lite/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/inherits/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/inherits/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/inherits/inherits.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/inherits/inherits_browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/inherits/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ipaddr.js/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ipaddr.js/ipaddr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ipaddr.js/lib/ipaddr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ipaddr.js/lib/ipaddr.js.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ipaddr.js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/isarray/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/media-typer/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/media-typer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/media-typer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/media-typer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/media-typer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/merge-descriptors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/merge-descriptors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/merge-descriptors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/merge-descriptors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/merge-descriptors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/methods/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/methods/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/methods/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/methods/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/methods/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-db/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-types/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-types/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-types/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-types/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime-types/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/build/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/build/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/cli.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/mime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mime/types.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/Changes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/License" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/Connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/ConnectionConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/Pool.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/PoolCluster.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/PoolConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/PoolConnection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/PoolNamespace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/PoolSelector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/Auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/BufferList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/PacketHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/PacketWriter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/Parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/Protocol.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/ResultSet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/SqlString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/Timer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/charsets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/field_flags.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/server_status.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/constants/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/AuthSwitchRequestPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/AuthSwitchResponsePacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ClientAuthenticationPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ComChangeUserPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ComPingPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ComQueryPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ComQuitPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ComStatisticsPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/EofPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ErrorPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/Field.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/FieldPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/HandshakeInitializationPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/LocalDataFilePacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/OkPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/SSLRequestPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/StatisticsPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/UseOldPasswordPacket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/packets/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Handshake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Ping.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Quit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Sequence.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/Statistics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/lib/protocol/sequences/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/mysql/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/lib/charset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/lib/encoding.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/lib/language.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/lib/mediaType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/negotiator/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/on-finished/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/on-finished/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/on-finished/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/on-finished/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/on-finished/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/parseurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/parseurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/parseurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/parseurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/parseurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/path-to-regexp/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/path-to-regexp/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/path-to-regexp/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/path-to-regexp/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/path-to-regexp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/process-nextick-args/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/process-nextick-args/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/process-nextick-args/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/process-nextick-args/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/proxy-addr/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/proxy-addr/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/proxy-addr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/proxy-addr/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/proxy-addr/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/dist/qs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/lib/formats.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/lib/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/lib/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/test/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/test/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/test/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/qs/test/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/range-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/range-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/range-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/range-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/range-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/raw-body/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/GOVERNANCE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/duplex-browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/duplex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/_stream_duplex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/_stream_passthrough.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/_stream_readable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/_stream_transform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/_stream_writable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/internal/streams/BufferList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/internal/streams/destroy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/internal/streams/stream-browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/lib/internal/streams/stream.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/passthrough.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/readable-browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/readable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/transform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/writable-browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/readable-stream/writable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safe-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safe-buffer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safe-buffer/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safe-buffer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safe-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/Porting-Buffer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/dangerous.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/safer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/safer-buffer/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/send/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/send/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/send/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/send/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/send/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/serve-static/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/serve-static/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/serve-static/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/serve-static/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/serve-static/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/setprototypeof/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/setprototypeof/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/setprototypeof/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/setprototypeof/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/setprototypeof/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/lib/SqlString.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/sqlstring/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/statuses/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/string_decoder/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/string_decoder/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/string_decoder/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/string_decoder/lib/string_decoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/string_decoder/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/type-is/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/type-is/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/type-is/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/type-is/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/type-is/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/unpipe/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/unpipe/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/unpipe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/unpipe/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/unpipe/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/util-deprecate/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/utils-merge/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/utils-merge/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/utils-merge/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/utils-merge/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/utils-merge/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/vary/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/vary/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/vary/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/vary/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/node_modules/vary/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js" afterDir="false" />
+    </list>
     <ignored path="ProjetCapChat/neutres/0.jpg" />
     <ignored path="ProjetCapChat/singuliers/0.jpg" />
     <ignored path="ProjetCapChat/singuliers/1.jpg" />
@@ -28,11 +475,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="90" column="27" lean-forward="true" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
-              <folding>
-                <element signature="e#1108#1798#0" />
-              </folding>
+            <state relative-caret-position="252">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
             </state>
           </provider>
         </entry>
@@ -40,26 +484,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/forms/contact.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/ApiManifest.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+            <state relative-caret-position="51">
+              <caret line="3" column="69" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -118,10 +544,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="438" />
-    <option name="y" value="2" />
-    <option name="width" value="1495" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -130,6 +555,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,20 +577,12 @@
             <path>
               <item name="Js" type="b2602c69:ProjectViewProjectNode" />
               <item name="Js" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="CreationApiREST" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Js" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Js" type="462c0819:PsiDirectoryNode" />
               <item name="ProjetCapChat" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -234,7 +652,12 @@
       <workItem from="1552981425198" duration="10792000" />
       <workItem from="1553868505519" duration="21000" />
       <workItem from="1554043734439" duration="1607000" />
-      <workItem from="1554189882497" duration="6362000" />
+      <workItem from="1554189882497" duration="7836000" />
+      <workItem from="1554207359180" duration="837000" />
+      <workItem from="1554288723870" duration="364000" />
+      <workItem from="1554797029373" duration="9798000" />
+      <workItem from="1555334210265" duration="42000" />
+      <workItem from="1555399888151" duration="463000" />
     </task>
     <task id="LOCAL-00001" summary="Added correction for cours1Exo1">
       <created>1549351582403</created>
@@ -348,11 +771,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554195959662</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Started API Creation">
+      <created>1554196538716</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1554196538716</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116699000" />
+    <option name="totallyTimeSpent" value="129677000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -364,10 +794,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13382508" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27136752" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -376,12 +806,13 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.16901408" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49947917" weight="0.1971831" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.24377032" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.50052685" side_tool="true" visible="true" weight="0.24377032" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49841937" weight="0.19609967" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49679488" visible="true" weight="0.19146608" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5032051" side_tool="true" visible="true" weight="0.19146608" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -578,9 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/16SampleServerExpress/SampleServer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/Sample8Module/SampleServer.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -629,34 +1057,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/test.yml" />
+    <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/16SampleServerExpress/SampleServer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/15SampleServerExpress/SampleServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/Seance5/17SampleServerExpress/SampleServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        <state relative-caret-position="249">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/ApiManifest.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/forms/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        <state relative-caret-position="204">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/SampleServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="90" column="27" lean-forward="true" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
-          <folding>
-            <element signature="e#1108#1798#0" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NodeJs/CreationApiREST/forms/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="69" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="69" />
         </state>
       </provider>
     </entry>

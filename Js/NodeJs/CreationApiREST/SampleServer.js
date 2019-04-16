@@ -8,29 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded 
 
 app.get('/', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.send('Vous êtes à l\'entrée');
+    res.send('Bonjour');
 });
 
-app.get('/sous-sol', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.send('Vous êtes au parking là');
-});
-
-app.get('/etage/1/bureau', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.send('Bienvenue dans mon bureau!');
-});
-
-app.get('/batiment/:batimentnum/bureau', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.end('Vous êtes dans le batiment n°' + req.params.batimentnum);
-});
 app.get('/private', function(req, res) {
     res.sendFile( __dirname + "/private/" + "chatmyope.jpg" );
 });
 
-// Ajouter un utilisateur dans la base
-// 1 - POST -> /users
 app.post('/users', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     obj = JSON.parse(JSON.stringify(req.body, null, "  "));
@@ -43,8 +27,9 @@ app.post('/users', function(req, res) {
 
     con.connect(function(err) {
         if (err) throw err;
-        var sql = mysql.format("INSERT INTO user (username, email,password) VALUES (?,?,?);", [obj.nom, obj.prenom,obj.nom]);
+        var sql = mysql.format("INSERT INTO user (nom, prenom,password) VALUES (?,?,?);", [obj.nom, obj.prenom,obj.password]);
         con.query(sql, function (err, result) {
+            console.log(obj.nom);
             if (err) throw err;
             console.log("1 record inserted");
         });
@@ -52,8 +37,6 @@ app.post('/users', function(req, res) {
     res.status(200).end('Contact créé' );
 });
 
-// Lister tous les utilisateurs
-// 2 - GET -> /users
 app.get('/users', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     var con = mysql.createConnection({
@@ -64,23 +47,28 @@ app.get('/users', function(req, res) {
       });
       con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT * FROM user", function (err, rows, fields) {
-          if (err) throw err;
-          console.log(rows);
-        for (var row in rows) {
-            console.log('Nom : ', rows[row].username); //Ce n'est pas rigoureux au nivau du for each mais pourquoi ??
-            res.write(rows[row].username+" \n");
+        if(req.query.nom){
+            let nom = req.query.nom;
+            let sql = mysql.format("SELECT * FROM user WHERE nom = ?",nom);
+            con.query(sql, function (err, rows, fields) {
+                if (err) throw err;
+                console.log(rows);
+                res.json(rows);
+            });
         }
-        res.end('------- USERS -------');
-        });
+        else{
+            con.query("SELECT * FROM user", function (err, rows, fields) {
+                if (err) throw err;
+                console.log(rows);
+                res.json(rows);
+            });
+        }
       });
 });
 
-// Afficher un utilisateur grâce à son ID
-// 3 - GET -> /users/id
 app.get('/users/:uId', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    var con = mysql.createConnection({
+    let con = mysql.createConnection({
         host: "localhost",
         user: "nodeuser",
         password: "node",
@@ -88,25 +76,68 @@ app.get('/users/:uId', function(req, res) {
     });
     con.connect(function(err) {
         if (err) throw err;
-        var uId = req.params.uId;
-        var sql = mysql.format("SELECT * FROM user WHERE id=?",uId);
+        let uId = req.params.uId;
+        let sql = mysql.format("SELECT * FROM user WHERE id=?",uId);
         con.query(sql, function (err, rows, fields) {
             if (err) throw err;
             console.log(rows);
+            /*for (var row in rows) {
+                console.log('Nom : ', rows[row].nom);//Ce n'est pas rigoureux au niveau du for each mais pourquoi ??
+                res.write(rows[row].nom+" \n");
+            }*/
 
-
-            for (var row in rows) {
-                console.log('Nom : ', rows[row].username);//Ce n'est pas rigoureux au niveau du for each mais pourquoi ??
-                res.write(rows[row].username+" \n");
-            }
-            res.end('------- USERS -------');
+            res.json(rows);
         });
     });
 });
 
+app.delete('/users/:uId', function (req, res) {
+    res.setHeader("Content-Type","application/json; charset=utf8");
+    let id = req.params.uId;
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "nodeuser",
+        password: "node",
+        database: "LicencePro"
+    });
+    con.connect(function (err) {
+        if(err) throw err;
+        let sql = mysql.format("DELETE FROM user WHERE id = ?",id);
+
+        con.query(sql,function (err, result,fields) {
+            if(err) throw err;
+            res.status(200).end("Nombre de lignes supprimée : " + result.affectedRows);
+        });
+    });
+});
+
+app.put('/users/:uId',function (req,res) {
+    res.setHeader("Content-Type","application/json; charset=utf8");
+    obj = JSON.parse(JSON.stringify(req.body,null," "));
+    let id = req.params.uId;
+
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "nodeuser",
+        password: "node",
+        database: "LicencePro"
+    });
+
+    con.connect(function (err) {
+        if(err) throw  err;
+        console.log(id);
+        console.log(obj);
+        let sql = mysql.format("UPDATE user SET nom=?, prenom=?, password=? WHERE id=?",[obj.nom,obj.prenom,obj.password,id]);
+        con.query(sql,function (err, result) {
+            if(err) throw err;
+            res.status(200).end("Nombre de lignes modifiés: " + result.affectedRows);
+        })
+    })
+
+})
+
 app.use(express.static('forms'));
 app.use('/static', express.static('public'));
-
 
 app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
