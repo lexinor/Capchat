@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var cors = require('cors');
+var jwt = require('jsonwebtoken');
 
 var app = express();
 app.use(bodyParser.json()); // pour supporter json encoded bodies
@@ -27,7 +29,7 @@ app.post('/users', function(req, res) {
 
     con.connect(function(err) {
         if (err) throw err;
-        var sql = mysql.format("INSERT INTO user (nom, prenom,password) VALUES (?,?,?);", [obj.nom, obj.prenom,obj.password]);
+        var sql = mysql.format("INSERT INTO user (nom, prenom,password,last_token) VALUES (?,?,?,?);", [obj.nom, obj.prenom,obj.password, genToken()]);
         con.query(sql, function (err, result) {
             console.log(obj.nom);
             if (err) throw err;
@@ -133,8 +135,59 @@ app.put('/users/:uId',function (req,res) {
             res.status(200).end("Nombre de lignes modifiés: " + result.affectedRows);
         })
     })
-
 })
+
+// Authentification
+
+app.get('/auth',function(req,res) {
+    console.log(genToken());
+    res.status(200).end();
+})
+
+app.get('/login',function(req,res) {
+    res.setHeader("Content-Type","application/json; charset=utf8");
+    obj = JSON.parse(JSON.stringify(req.body,null," "));
+    let id = req.params.uId;
+
+    let con = mysql.createConnection({
+        host: "localhost",
+        user: "nodeuser",
+        password: "node",
+        database: "LicencePro"
+    });
+
+    let token = createToken(obj);
+
+    //let sql = "SELECT nom, prenom, password, last_token,FROM user WHERE nom=?, prenom=?, password=?, last_token=?, token_gendate"
+
+    res.status(200).end();
+})
+
+
+// Etape pour token
+// 1 - Verif - Token
+// 2 - Verif - Couple Token/Username
+// 3 - Ok
+
+function createToken(data){
+    let token = jwt.sign({ data: data, exp: Math.floor(Date.now()/1000+(60*60)) },{ expiresIn: '1h' });
+    return token;
+}
+
+/*function genToken(){
+    let tokenSize = 50;
+    let token = "";
+    let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for (let i = 0; i < tokenSize; i++){
+        token += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    return token;
+}
+
+function setTokenValidity(){
+
+}*/
 
 app.use(express.static('forms'));
 app.use('/static', express.static('public'));
@@ -143,5 +196,8 @@ app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.status(404).send('Lieu inconnu : '+req.originalUrl);
 });
+
+
+
 
 app.listen(8080);
