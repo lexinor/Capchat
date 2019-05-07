@@ -29,7 +29,7 @@ app.post('/users', function(req, res) {
 
     con.connect(function(err) {
         if (err) throw err;
-        var sql = mysql.format("INSERT INTO user (nom, prenom,password,last_token) VALUES (?,?,?,?);", [obj.nom, obj.prenom,obj.password, genToken()]);
+        var sql = mysql.format("INSERT INTO user (nom, prenom,password) VALUES (?,?,?);", [obj.nom, obj.prenom,obj.password]);
         con.query(sql, function (err, result) {
             console.log(obj.nom);
             if (err) throw err;
@@ -140,7 +140,7 @@ app.put('/users/:uId',function (req,res) {
 // Authentification
 
 app.get('/auth',function(req,res) {
-    console.log(genToken());
+    console.log(createToken("toto   "));
     res.status(200).end();
 })
 
@@ -169,12 +169,12 @@ app.get('/login',function(req,res) {
 // 2 - Verif - Couple Token/Username
 // 3 - Ok
 
-function createToken(data){
-    let token = jwt.sign({ data: data, exp: Math.floor(Date.now()/1000+(60*60)) },{ expiresIn: '1h' });
+function createToken(){
+    let token = jwt.sign({ data: 'toto', exp: Math.floor(Date.now()/1000+(60*60)) },'secret',{ expiresIn: '1h' });
     return token;
 }
-
-/*function genToken(){
+/*
+function genToken(){
     let tokenSize = 50;
     let token = "";
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -183,11 +183,11 @@ function createToken(data){
         token += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
     }
     return token;
-}
+}*/
 
 function setTokenValidity(){
 
-}*/
+}
 
 app.use(express.static('forms'));
 app.use('/static', express.static('public'));
@@ -196,8 +196,6 @@ app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.status(404).send('Lieu inconnu : '+req.originalUrl);
 });
-
-
 
 
 app.listen(8080);
