@@ -3,12 +3,14 @@ let bodyParser = require('body-parser');
 let mysql = require('mysql');
 let cors = require('cors');
 let jwt = require('jsonwebtoken');
+let pug = require('pug');
 let crypto = require('crypto');
 let hash = crypto.createHash('sha256');
 
 let app = express();
 app.use(bodyParser.json()); // pour supporter json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded url
+app.set('view engine', 'pug');
 
 let con = mysql.createConnection({
     host: "localhost",
@@ -17,15 +19,12 @@ let con = mysql.createConnection({
     database: "capchat"
 });
 
-
 app.get('/', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.send('Bonjour');
+    console.log("calling index.pug");
+    res.render('index', { pageTitle: "Projet Capchat" });
 });
 
-app.get('/private', function(req, res) {
-    res.sendFile( __dirname + "/private/" + "chatmyope.jpg" );
-});
+
 
 app.get('/users', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -125,21 +124,26 @@ app.put('/users/:uId',function (req,res) {
     })
 });
 
+app.get('/login', (req,res) => {
+    res.render('login');
+});
+
 app.post('/login', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     obj = JSON.parse(JSON.stringify(req.body,null," "));
 
-    let hashPass = crypto.createHash('md5').update(obj.pass).digest('hex');
-    console.log("MD5 hash : " + hash);
+    /*let hashPass = crypto.createHash('md5').update(obj.pass).digest('hex');
+    console.log("MD5 hash : " + hash);*/
 
     con.connect(function(err) {
         if (err) throw err;
-        let sql = mysql.format("SELECT * FROM user WHERE uLogin=? and uPass=?",[obj.login, obj.hashPass]);
+        let sql = mysql.format("SELECT * FROM user WHERE uLogin=? and uPass=?",[obj.login, obj.pass]);
         con.query(sql, function (err, rows, fields) {
             if (err) throw err;
             console.log(Date.now());
-            var token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
+            let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
             console.log(token);
+            res.setHeader("token",token);
             res.json(rows);
         });
     });
@@ -147,7 +151,7 @@ app.post('/login', function(req, res) {
 
 
 app.use(express.static('forms'));
-app.use('/static', express.static('public'));
+app.use(express.static('public'));
 
 app.use(function(req, res, next){
     res.setHeader("Content-Type", "application/json; charset=utf-8");

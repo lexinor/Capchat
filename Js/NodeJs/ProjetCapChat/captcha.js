@@ -151,3 +151,5 @@ function ReturnTips() {
 
     return indices;
 }
+
+exports.InitCaptcha = InitCaptcha;
