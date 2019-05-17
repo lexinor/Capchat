@@ -3,7 +3,7 @@ let bodyParser = require('body-parser');
 let mysql = require('mysql');
 let cors = require('cors');
 let jwt = require('jsonwebtoken');
-let pug = require('pug');
+let pug = require('pug/lib');
 let crypto = require('crypto');
 let hash = crypto.createHash('sha256');
 
