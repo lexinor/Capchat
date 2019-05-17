@@ -1,4 +1,5 @@
-# CoursWeb
+# Capchat
 
-## Bac à sable pour s'amuser en JS, PHP etc.
+## This is a remake of a Captcha for a School project using NodeJS
+
 
