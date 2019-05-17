@@ -24,8 +24,6 @@ app.get('/', function(req, res) {
     res.render('index', { pageTitle: "Projet Capchat" });
 });
 
-
-
 app.get('/users', function(req, res) {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     con.connect(function(err) {
@@ -124,9 +122,6 @@ app.put('/users/:uId',function (req,res) {
     })
 });
 
-app.get('/ando', (req,res) => {
-});
-
 app.get('/login', (req,res) => {
     res.render('login');
 });
@@ -147,7 +142,7 @@ app.post('/login', function(req, res) {
             let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
             console.log(token);
             res.setHeader("token",token);
-            res.json(rows);
+            res.status(200).end("Vous êtes connecté");
         });
     });
 });
