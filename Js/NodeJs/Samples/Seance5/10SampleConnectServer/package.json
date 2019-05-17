@@ -1,0 +1,14 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demo desc",
+  "main": "SampleServer.js",
+  "scripts": {
+    "test": "go"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "file:node_modules/connect"
+  }
+}
