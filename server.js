@@ -1,16 +1,26 @@
 let express = require('express');
+let cookieParser = require('cookie-parser');
+let session = require('express-session');
 let bodyParser = require('body-parser');
 let mysql = require('mysql');
-let cors = require('cors');
+
 let jwt = require('jsonwebtoken');
 let pug = require('pug/lib');
+
 let crypto = require('crypto');
 let hash = crypto.createHash('sha256');
 
 let app = express();
+
 app.use(bodyParser.json()); // pour supporter json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded url
 app.set('view engine', 'pug');
+app.use(cookieParser());
+app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 6000} }));
+
+// Infos : https://stackoverflow.com/questions/23566555/whats-difference-with-express-session-and-cookie-session
+// Infos : https://stackoverflow.com/questions/40755622/how-to-use-session-variable-with-nodejs
+
 
 let con = mysql.createConnection({
     host: "localhost",
@@ -18,6 +28,27 @@ let con = mysql.createConnection({
     password: "node",
     database: "capchat"
 });
+
+let ssn;
+
+app.get('/session', (req,res) => {
+    ssn = req.session;
+    let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
+    ssn.token = token;
+    if(ssn.token)
+        res.redirect('/session2');
+    else
+        res.end("nope");
+})
+
+app.get('/session2', (req,res) => {
+    ssn = req.session;
+    if(ssn.token){
+        res.send("Votre token est " + ssn.token);
+    }else{
+        res.send("Aucun token");
+    }
+})
 
 app.get('/', function(req, res) {
     console.log("calling index.pug");
@@ -45,7 +76,7 @@ app.post('/users', function(req, res) {
     con.connect(function(err) {
         if (err) throw err;
 
-        var sql = mysql.format("INSERT INTO user (uLogin, uPass, uMail) VALUES (?,?,?);", [obj.login, hashPass, obj.mail]);
+        let sql = mysql.format("INSERT INTO user (uLogin, uPass, uMail) VALUES (?,?,?);", [obj.login, hashPass, obj.mail]);
         con.query(sql, function (err, result) {
             console.log(obj.nom);
             if (err) throw err;
@@ -122,6 +153,8 @@ app.put('/users/:uId',function (req,res) {
     })
 });
 
+
+
 app.get('/login', (req,res) => {
     res.render('login');
 });
@@ -138,10 +171,12 @@ app.post('/login', function(req, res) {
         let sql = mysql.format("SELECT * FROM user WHERE uLogin=? and uPass=?",[obj.login, obj.pass]);
         con.query(sql, function (err, rows, fields) {
             if (err) throw err;
-            console.log(Date.now());
-            let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
-            console.log(token);
-            res.setHeader("token",token);
+            console.log(obj);
+            console.log(rows);
+            // console.log(Date.now());
+            // let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
+            // console.log(token);
+            // res.setHeader("token",token);
             res.status(200).end("Vous êtes connecté");
         });
     });

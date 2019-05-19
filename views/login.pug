@@ -27,9 +27,9 @@ html(lang='en')
                                             h1.h4.text-gray-900.mb-4 Welcome Back!
                                         form.user(method="POST" action="login" enctype='application/json')
                                             .form-group
-                                                input#login.form-control.form-control-user(type='text', aria-describedby='emailHelp', placeholder='Enter Email Address...' required)
+                                                input#login.form-control.form-control-user(name='login' type='text', aria-describedby='emailHelp', placeholder='Enter Email Address...' required)
                                             .form-group
-                                                input#pass.form-control.form-control-user(type='password', placeholder='Password' required)
+                                                input#pass.form-control.form-control-user(name='pass' type='password', placeholder='Password' required)
                                             .form-group
                                                 .custom-control.custom-checkbox.small
                                                     input#customCheck.custom-control-input(type='checkbox')
