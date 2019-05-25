@@ -425,8 +425,8 @@ app.get('/imagesets/artist/:artistName', (req,res) => {
     if(artistName){
         if(token){
             res.setHeader("Content-Type", "application/json; charset=utf-8");
-            //SELECT setName, theme.themeName, uLogin AS artistName FROM imageset, artist, user, theme WHERE imageset.idArtist=artist.idArtist AND artist.UserId=user.uId AND theme.idTheme=imageset.idTheme AND uLogin = ""
-            let sql = "SELECT * FROM imageset WHERE idArtist=?";
+
+            let sql = "SELECT * FROM `imageset` WHERE imageset.idArtist=(SELECT artist.idArtist FROM user, artist WHERE user.uLogin=? AND user.uId=artist.UserId)";
             con.query(sql, [artistName], function (err, rows) {
                 if (err) throw err;
                 if(rows.length > 0){
