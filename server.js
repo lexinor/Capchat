@@ -123,6 +123,7 @@ app.get('/users/:uId', function(req, res) {
 app.delete('/users/:uId', function (req, res) {
     let host = req.headers['init'];
     let token = req.headers['token'];
+
     if(token){
         console.log("Token detected");
         res.setHeader("Content-Type","application/json; charset=utf8");
@@ -495,13 +496,43 @@ app.post('/imagesets', (req,res)=>{
 })
 
 // Edit Nom, idTheme of imageSet
-app.put('/imageset/:idTheme', (req,res)=>{
+app.put('/imagesets/:idTheme', (req,res)=>{
 
 })
 
 // Delete an Image Set
-app.delete('/imageset/:idTheme', (req, res) => {
+app.delete('/imagesets/:setName', (req, res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
 
+    let setName = req.params.setName;
+    if(setName){
+        if(token){
+            console.log("Token detected");
+            res.setHeader("Content-Type","application/json; charset=utf8");
+
+            let sql = mysql.format("DELETE FROM imageset WHERE setName=?",setName);
+            con.query(sql,function (err, result,fields) {
+                if(err) throw err;
+                if(result.affectedRows > 0){
+                    console.log(setName + " has been successfully deleted ");
+                    res.status(200).end("Nombre de lignes supprimées : " + result.affectedRows);
+                }
+                else{
+                    console.log("Not able to delete the image set");
+                    res.status(200).end("Aucune lignes supprimées");
+                }
+            });
+        }
+        else {
+            console.log("No token detected")
+            res.render('login');
+        }
+    }
+    else{
+        console.log("No image set name detected");
+        res.status(200).redirect('/');
+    }
 })
 
 app.use(express.static('forms'));
