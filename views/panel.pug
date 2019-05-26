@@ -1,13 +1,14 @@
 doctype html
 html(lang='en')
     include includes/header.pug
+    title User Panel
     body#page-top
         // Page Wrapper
         #wrapper
             // Sidebar
             ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
                 // Sidebar - Brand
-                a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='/')
+                a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
                     .sidebar-brand-icon.rotate-n-15
                         i.fas.fa-laugh-wink
                     .sidebar-brand-text.mx-3
@@ -17,9 +18,9 @@ html(lang='en')
                 hr.sidebar-divider.my-0
                 // Nav Item - Dashboard
                 li.nav-item
-                    a.nav-link(href='index.html')
+                    a.nav-link(href='/destroy')
                         i.fas.fa-fw.fa-tachometer-alt
-                        span Dashboard
+                        span Disconnect
                 // Divider
                 hr.sidebar-divider
                 // Heading
@@ -35,18 +36,6 @@ html(lang='en')
                             h6.collapse-header Custom Components:
                             a.collapse-item(href='buttons.html') Buttons
                             a.collapse-item(href='cards.html') Cards
-                // Nav Item - Utilities Collapse Menu
-                li.nav-item
-                    a.nav-link.collapsed(href='#', data-toggle='collapse', data-target='#collapseUtilities', aria-expanded='true', aria-controls='collapseUtilities')
-                        i.fas.fa-fw.fa-wrench
-                        span Utilities
-                    #collapseUtilities.collapse(aria-labelledby='headingUtilities', data-parent='#accordionSidebar')
-                        .bg-white.py-2.collapse-inner.rounded
-                            h6.collapse-header Custom Utilities:
-                            a.collapse-item(href='utilities-color.html') Colors
-                            a.collapse-item(href='utilities-border.html') Borders
-                            a.collapse-item(href='utilities-animation.html') Animations
-                            a.collapse-item(href='utilities-other.html') Other
                 // Divider
 
                 .text-center.d-none.d-md-inline
@@ -61,11 +50,19 @@ html(lang='en')
                         // Sidebar Toggle (Topbar)
                         button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
                             i.fa.fa-bars
+                        // Topbar Navbar
+                        ul.navbar-nav.ml-auto
+                            // Nav Item - User Information
+                            li.nav-item.dropdown.no-arrow
+                                a#userDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                                    span.mr-2.d-none.d-lg-inline.text-gray-600.small Connected
+
                     // End of Topbar
                     // Begin Page Content
                     .container-fluid
                         // Page Heading
-                        h1.h3.mb-4.text-gray-800 Blank Page
+                        h1.h3.mb-4.text-gray-800 Welcome to the user panel
+                        a.btn.btn-success(href="/upload") Send a CapChat with a zip file
                     // /.container-fluid
                     // End of Main Content
                     // Footer

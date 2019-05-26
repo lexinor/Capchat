@@ -4,12 +4,15 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
-const jwt = require('jsonwebtoken'
-);
-const pug = require('pug/lib');
+const jwt = require('jsonwebtoken');
+const pug = require('pug');
 
 const crypto = require('crypto');
 const hash = crypto.createHash('sha256');
+
+const formidable = require('formidable');
+const util = require('util');
+const fs = require('fs');
 
 const app = express();
 
@@ -17,11 +20,12 @@ app.use(bodyParser.json()); // pour supporter json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded url
 app.set('view engine', 'pug');
 app.use(cookieParser());
-app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 6000} }));
+app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 900000} })); // 900000 = 15 min
 
 // Infos : https://stackoverflow.com/questions/23566555/whats-difference-with-express-session-and-cookie-session
 // Infos : https://stackoverflow.com/questions/40755622/how-to-use-session-variable-with-nodejs
 
+var sess;
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -30,196 +34,89 @@ const con = mysql.createConnection({
     database: "capchat"
 });
 
+// BASIC NAVIGATION PAGES //
+
 app.get('/', function(req, res) {
-    console.log("calling index.pug");
-    res.render('index', { pageTitle: "Projet Capchat" });
+    res.render('login');
 });
-
-app.get('/users', function(req, res) {
-    let host = req.headers['init'];
-    let token = req.headers['token'];
-
-    if(token){
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
-            con.query("SELECT * FROM user", function (err, rows) {
-                if (err) throw err;
-                console.log(rows);
-                res.json(rows);
-                res.end("Sucess");
-            });
-    }
-    else {
-        console.log("No token detected");
-        res.end("No token detected");
-    }
-});
-
-app.post('/users', function(req, res) {
-    let host = req.headers['init'];
-    let token = req.headers['token'];
-
-    if(token) {
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
-        obj = JSON.parse(JSON.stringify(req.body, null, "  "));
-
-        //let hashPass = crypto.createHash('md5').update(obj.pass).digest('hex');
-
-        let sql = mysql.format("INSERT INTO user (uLogin, uPass, uMail) VALUES (?,?,?);", [obj.login, obj.pass, obj.mail]);
-        con.query(sql, function (err, result) {
-            console.log(obj.login);
-            if (err) throw err;
-            if (result.affectedRows > 0) {
-                console.log("1 record inserted");
-                res.status(200).redirect('/');
-            } else {
-                console.log("0 record inserted");
-                res.status(200).end("No account created");
-            }
-        });
-    }
-    else {
-        console.log("No token detected");
-        res.status(200).redirect('/login');
-    }
-});
-
-app.get('/users', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    //con.connect(function(err) {
-    //    if (err) throw err;
-        if(req.query.login){
-            let login = req.query.login;
-            let sql = mysql.format("SELECT * FROM user WHERE uLogin = ?",login);
-            con.query(sql, function (err, rows, fields) {
-                if (err) throw err;
-                console.log(rows);
-                res.json(rows);
-            });
-        }
-        else{
-            con.query("SELECT * FROM user", function (err, rows, fields) {
-                if (err) throw err;
-                console.log(rows);
-                res.json(rows);
-            });
-        }
-    //});
-});
-
-app.get('/users/:uId', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
-    //con.connect(function(err) {
-    //    if (err) throw err;
-        let uId = req.params.uId;
-        let sql = mysql.format("SELECT * FROM user WHERE uId=?",uId);
-        con.query(sql, function (err, rows, fields) {
-            if (err) throw err;
-            console.log(rows);
-            res.json(rows);
-        });
-    //});
-});
-
-app.delete('/users/:uId', function (req, res) {
-    let host = req.headers['init'];
-    let token = req.headers['token'];
-
-    if(token){
-        console.log("Token detected");
-        res.setHeader("Content-Type","application/json; charset=utf8");
-        let id = req.params.uId;
-        console.log("ID : " + id);
-
-        //con.connect(function (err) {
-        //    if(err) throw err;
-            let sql = mysql.format("DELETE FROM user WHERE uId = ?",id);
-
-            con.query(sql,function (err, result,fields) {
-                if(err) throw err;
-                if(result.affectedRows > 0)
-                    res.status(200).end("Nombre de lignes supprimées : " + result.affectedRows);
-                else
-                    res.status(200).end("Aucune lignes supprimées")
-            });
-        //});
-    }
-    else {
-        res.render('login');
-    }
-});
-
-app.put('/users/:uId',function (req,res) {
-    let host = req.headers['init'];
-    let token = req.headers['token'];
-
-    if(token){
-        res.setHeader("Content-Type","application/json; charset=utf8");
-        obj = JSON.parse(JSON.stringify(req.body,null," "));
-        let id = req.params.uId;
-
-        let sql = mysql.format("UPDATE user SET uLogin=?, uPass=?, uMail=? WHERE uId=?",[obj.login,obj.pass,obj.mail,id]);
-
-        con.query(sql,function (err, result) {
-            if(err) throw err;
-            if(result.affectedRows > 0){
-                console.log(obj.login + " successfully modified");
-                res.status(200).end("Nombre de lignes modifiés: " + result.affectedRows);
-            }
-            else{
-                res.status(200).end("Aucune lignes modifiés : " + result.affectedRows);
-            }
-        })
-    }
-    else {
-        console.log("No token detected");
-        res.status(200).redirect('/login');
-    }
-});
-
-app.get('/tests', (req,res) => {
-    var isTokenOk = checkToken(req);
-    console.log(checkToken(req).then((result) => {
-        return result;
-    }));
-
-    if(isTokenOk)
-        res.end("Token ok");
-    else
-        res.end("Token not ok")
-});
-
-
-
-async function checkToken(req){
-    let host = req.headers['init'];
-    let token = req.headers['token'];
-
-    if(token){
-        let sql = mysql.format("SELECT * FROM user WHERE last_token=?",token);
-        con.query(sql,function (err, rows) {
-            if(err) throw err;
-            if(rows.length > 0){
-                console.log(rows[0].token_date);
-                return true;
-            }
-            else{
-                return false;
-            }
-        })
-    }
-    else{
-        return false;
-    }
-}
-
-// -------- LOGIN-IN -------- //
 
 app.get('/login', (req,res) => {
     res.render('login');
 });
 
+app.get('/register', (req,res) => {
+    res.render('register');
+});
+
+app.get('/upload', (req,res) => {
+    sess = req.session;
+    if(req.session.token){
+        con.query("SELECT * FROM theme", function (err, rows) {
+            if (err) throw err;
+            if(rows.length > 0){
+                let themeList = Array.from(rows);
+                console.log(themeList);
+                res.render('upload', { header: "Upload your image set", themeList: themeList }); // Impossible d'utiliser ce tableau dans PUG pour je ne sais quelle raison
+            }
+            else{
+                res.set("token",token);
+                console.log("Empty theme table");
+                res.status(200).end("No themes");
+            }
+        });
+    }
+    else{
+        res.redirect('/login')
+    }
+});
+
+app.post('/upload', (req,res) => {
+    var form = new formidable.IncomingForm();
+
+    form.uploadDir = "./uploads";
+    form.keepExtensions = true;
+
+    form.parse(req, function(err, fields, files) {
+        if (err) throw err;
+
+        // Send result on client
+        res.write('received upload:\n\n');
+        res.end(util.inspect({fields: fields, files: files}));
+    });
+})
+
+app.get('/panel', function(req, res) {
+    sess = req.session;
+    if(req.session.token){
+        console.log("calling panel.pug");
+        res.render('panel');
+    }
+    else{
+        res.redirect('/login')
+    }
+
+});
+
+app.get('/destroy', (req, res) => {
+    if(req.session){
+        req.session.destroy((err) => {
+            console.log('Session destroyed');
+            res.redirect('/');
+        })
+    }
+    else{
+        console.log('No session detected');
+
+        res.redirect('/login');
+    }
+})
+
+// OTHER ACTIONS //
+
+// -------- LOGIN-IN -------- //
+
 app.post('/login', function(req, res) {
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.set("Content-Type", "application/json; charset=utf-8");
     obj = JSON.parse(JSON.stringify(req.body,null," "));
 
     let uId = null;
@@ -243,16 +140,18 @@ app.post('/login', function(req, res) {
                         console.log("Update failed");
                     }
                 });
-                res.setHeader("token",token);
-                res.status(200).end("Vous êtes connecté");
+                res.set("token",token);
+                req.session.login = obj.login;
+                req.session.token = token;
+                res.status(200).redirect('/panel');
             }
             else{
-                res.status(200).end("Erreur lors de la connexion")
+                res.status(200).redirect('/');
             }
         }
         else{
             console.log("No account found");
-            res.status(200).redirect('/login');
+            res.status(200).redirect('/');
         }
     });
 });
@@ -265,10 +164,11 @@ app.get('/artists', (req,res) => {
     let token = req.headers['token'];
 
     if(token){
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.set("Content-Type", "application/json; charset=utf-8");
         con.query("SELECT idArtist, uLogin FROM artist, user WHERE UserId=uId", function (err, rows) {
             if (err) throw err;
             console.log(rows);
+            res.set("token",token);
             res.json(rows);
             res.status(200).end("Sucess");
         });
@@ -284,8 +184,8 @@ app.post('/artists', (req, res) => {
     let host = req.headers['init'];
     let token = req.headers['token'];
 
-    if(token) {
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+    if(token != "" || req.session.token) {
+        res.set("Content-Type", "application/json; charset=utf-8");
         obj = JSON.parse(JSON.stringify(req.body, null, "  "));
         console.log("login : " + obj.login);
 
@@ -302,13 +202,16 @@ app.post('/artists', (req, res) => {
                     if (err) throw err;
                     if (result.affectedRows > 0) {
                         console.log(obj.login + " added as an artist");
+                        res.set("token",token);
                         res.status(200).end("Artist added");
                     } else {
+                        res.set("token",token);
                         console.log("No artist added");
                         res.status(200).end("No artist added");
                     }
                 });
-                res.status(200).end("Artist added");
+                res.set("token",token);
+                res.status(200).end("Artist not added");
             }
             else{
                 console.log("Cannot find the requested user");
@@ -329,16 +232,18 @@ app.get('/themes', (req,res) => {
     let host = req.headers['init'];
     let token = req.headers['token'];
 
-    if(token){
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+    if(token || req.session.token){
+        res.set("Content-Type", "application/json; charset=utf-8");
         con.query("SELECT * FROM theme", function (err, rows) {
             if (err) throw err;
             if(rows.length > 0){
                 console.log(rows);
+                res.set("token",token);
                 res.json(rows);
                 res.status(200).end("Sucess");
             }
             else{
+                res.set("token",token);
                 console.log("Empty theme table");
                 res.status(200).end("No themes");
             }
@@ -356,7 +261,7 @@ app.post('/themes', (req, res) => {
     let token = req.headers['token'];
 
     if(token) {
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.set("Content-Type", "application/json; charset=utf-8");
         obj = JSON.parse(JSON.stringify(req.body, null, "  "));
 
         let sql = mysql.format("SELECT * FROM theme WHERE themeName=?",[obj.themeName]);
@@ -368,16 +273,19 @@ app.post('/themes', (req, res) => {
                     if (err) throw err;
                     if (result.affectedRows > 0) {
                         console.log(obj.themeName + " added as a theme");
-                        res.end();
+                        res.set("token",token);
+                        res.status(200).end(obj.themeName + " added as a theme");
                     } else {
                         console.log("No theme added");
                         res.status(200).end("No theme added");
                     }
                 });
+                res.set("token",token);
                 res.status(200).end("Theme added");
             }
             else{
                 console.log("Theme already exists");
+                res.set("token",token);
                 res.status(200).redirect('/')
             }
         });
@@ -394,16 +302,20 @@ app.post('/themes', (req, res) => {
 app.get('/imagesets', (req,res) => {
     let host = req.headers['init'];
     let token = req.headers['token'];
+    console.log("headers : " + req.get('token'));
+
     if(token){
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.set("Content-Type", "application/json; charset=utf-8");
         con.query("SELECT * FROM imageset", function (err, rows) {
             if (err) throw err;
             if(rows.length > 0){
                 console.log(rows);
+                res.set("token",token);
                 res.json(rows);
                 res.status(200).end("Sucess");
             }
             else{
+                res.set("token",token);
                 console.log("Empty theme table");
                 res.status(200).end("No themes");
             }
@@ -425,17 +337,19 @@ app.get('/imagesets/artist/:artistName', (req,res) => {
     let artistName = req.params.artistName;
     if(artistName){
         if(token){
-            res.setHeader("Content-Type", "application/json; charset=utf-8");
+            res.set("Content-Type", "application/json; charset=utf-8");
 
             let sql = "SELECT * FROM `imageset` WHERE imageset.idArtist=(SELECT artist.idArtist FROM user, artist WHERE user.uLogin=? AND user.uId=artist.UserId)";
             con.query(sql, [artistName], function (err, rows) {
                 if (err) throw err;
                 if(rows.length > 0){
                     console.log(rows);
+                    res.set("token",token);
                     res.json(rows);
                     res.status(200).end("Sucess");
                 }
                 else{
+                    res.set("token",token);
                     console.log("Empty image set table");
                     res.status(200).end("No image set recieved");
                 }
@@ -463,7 +377,7 @@ app.post('/imagesets', (req,res)=>{
     let token = req.headers['token'];
 
     if(token) {
-        res.setHeader("Content-Type", "application/json; charset=utf-8");
+        res.set("Content-Type", "application/json; charset=utf-8");
         obj = JSON.parse(JSON.stringify(req.body, null, "  "));
 
         let sql = mysql.format("SELECT * FROM imageset WHERE setName=? AND idTheme=? AND idArtist=?",[obj.setName, obj.themeId, obj.artistId] );
@@ -475,15 +389,19 @@ app.post('/imagesets', (req,res)=>{
                     if (err) throw err;
                     if (result.affectedRows > 0) {
                         console.log(obj.setName + " added as image set");
+                        res.set("token",token);
                         res.status(200).end("Added image set");
                     } else {
                         console.log("No image set added");
+                        res.set("token",token);
                         res.status(200).end("No image set added");
                     }
                 });
+                res.set("token",token);
                 res.status(200).end("Image set added");
             }
             else{
+                res.set("token",token);
                 console.log("Image set already exists");
                 res.status(200).redirect('/')
             }
@@ -509,16 +427,18 @@ app.delete('/imagesets/:setName', (req, res) => {
     if(setName){
         if(token){
             console.log("Token detected");
-            res.setHeader("Content-Type","application/json; charset=utf8");
+            res.set("Content-Type","application/json; charset=utf8");
 
             let sql = mysql.format("DELETE FROM imageset WHERE setName=?",setName);
             con.query(sql,function (err, result,fields) {
                 if(err) throw err;
                 if(result.affectedRows > 0){
                     console.log(setName + " has been successfully deleted ");
+                    res.set("token",token);
                     res.status(200).end("Nombre de lignes supprimées : " + result.affectedRows);
                 }
                 else{
+                    res.set("token",token);
                     console.log("Not able to delete the image set");
                     res.status(200).end("Aucune lignes supprimées");
                 }
@@ -535,11 +455,148 @@ app.delete('/imagesets/:setName', (req, res) => {
     }
 })
 
+
+
+// OLD METHODS //
+
+app.get('/users', function(req, res) {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        res.set("Content-Type", "application/json; charset=utf-8");
+        con.query("SELECT * FROM user", function (err, rows) {
+            if (err) throw err;
+            console.log(rows);
+            res.json(rows);
+            res.end("Sucess");
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.end("No token detected");
+    }
+});
+
+app.post('/users', function(req, res) {
+    res.set("Content-Type", "application/json; charset=utf-8");
+    obj = JSON.parse(JSON.stringify(req.body, null, "  "));
+
+    //let hashPass = crypto.createHash('md5').update(obj.pass).digest('hex');
+
+    let sql = mysql.format("INSERT INTO user (uLogin, uPass, uMail) VALUES (?,?,?);", [obj.login, obj.pass, obj.mail]);
+    con.query(sql, function (err, result) {
+        console.log(obj.login);
+        if (err) throw err;
+        if (result.affectedRows > 0) {
+            console.log("1 record inserted");
+            res.status(200).redirect('/login');
+        } else {
+            console.log("0 record inserted");
+            res.status(200).redirect('/register');
+        }
+    });
+});
+
+app.get('/users', function(req, res) {
+    res.set("Content-Type", "application/json; charset=utf-8");
+    //con.connect(function(err) {
+    //    if (err) throw err;
+    if(req.query.login){
+        let login = req.query.login;
+        let sql = mysql.format("SELECT * FROM user WHERE uLogin = ?",login);
+        con.query(sql, function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            res.json(rows);
+        });
+    }
+    else{
+        con.query("SELECT * FROM user", function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            res.json(rows);
+        });
+    }
+    //});
+});
+
+app.get('/users/:uId', function(req, res) {
+    res.set("Content-Type", "application/json; charset=utf-8");
+    //con.connect(function(err) {
+    //    if (err) throw err;
+    let uId = req.params.uId;
+    let sql = mysql.format("SELECT * FROM user WHERE uId=?",uId);
+    con.query(sql, function (err, rows, fields) {
+        if (err) throw err;
+        console.log(rows);
+        res.json(rows);
+    });
+    //});
+});
+
+app.delete('/users/:uId', function (req, res) {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        console.log("Token detected");
+        res.set("Content-Type","application/json; charset=utf8");
+        let id = req.params.uId;
+        console.log("ID : " + id);
+
+        //con.connect(function (err) {
+        //    if(err) throw err;
+        let sql = mysql.format("DELETE FROM user WHERE uId = ?",id);
+
+        con.query(sql,function (err, result,fields) {
+            if(err) throw err;
+            if(result.affectedRows > 0)
+                res.status(200).end("Nombre de lignes supprimées : " + result.affectedRows);
+            else
+                res.status(200).end("Aucune lignes supprimées")
+        });
+        //});
+    }
+    else {
+        res.render('login');
+    }
+});
+
+app.put('/users/:uId',function (req,res) {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        res.set("Content-Type","application/json; charset=utf8");
+        obj = JSON.parse(JSON.stringify(req.body,null," "));
+        let id = req.params.uId;
+
+        let sql = mysql.format("UPDATE user SET uLogin=?, uPass=?, uMail=? WHERE uId=?",[obj.login,obj.pass,obj.mail,id]);
+
+        con.query(sql,function (err, result) {
+            if(err) throw err;
+            if(result.affectedRows > 0){
+                console.log(obj.login + " successfully modified");
+                res.status(200).end("Nombre de lignes modifiés: " + result.affectedRows);
+            }
+            else{
+                res.status(200).end("Aucune lignes modifiés : " + result.affectedRows);
+            }
+        })
+    }
+    else {
+        console.log("No token detected");
+        res.status(200).redirect('/login');
+    }
+});
+
+
 app.use(express.static('forms'));
 app.use(express.static('public'));
 
 app.use(function(req, res, next){
-    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.set("Content-Type", "application/json; charset=utf-8");
     res.status(404).send('Lieu inconnu : '+req.originalUrl);
 });
 
