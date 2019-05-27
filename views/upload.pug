@@ -27,7 +27,11 @@ html(lang='en')
                         .row.align-content-center
                         form.user.col-10(action="upload" method="POST" enctype="multipart/form-data")
                             .form-group.col-6
-                                select.form-control(name="theme")
+                                label#setNameLbl Name of the image set :
+                                input.form-control.form-control-user(name="setName" required)
+                            .form-group.col-6
+                                label#themeLbl Choose your theme :
+                                select.form-control(name="theme" required)
                                     - for (var i = 0; i < themeList.length; i++)
                                         option(value=themeList[i].idTheme)= themeList[i].themeName
                             .form-group.col-6

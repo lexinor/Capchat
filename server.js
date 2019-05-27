@@ -73,15 +73,20 @@ app.get('/upload', (req,res) => {
 });
 
 app.post('/upload', (req,res) => {
-    console.log(req.files.zipFile);
+    console.log(req.body);
+
     let sentFile = req.files.zipFile;
     let sentFileName = sentFile.name;
+
+    // We move from a temp file to the real directory to save it
     sentFile.mv('./uploads/' + sentFileName , (err) => {
         if(err)
             res.status(500).send(err);
 
-        // We need to
+        // Here we unzip the given file
         fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: './uploads/' }));
+
+        // And here we remove the .zip file after everything is done
         fs.unlink('./uploads/' + sentFileName, (err) => {
             if (err) throw err;
 
