@@ -3,7 +3,6 @@ html(lang='en')
     include includes/header.pug
     title Upload page
     body#page-top
-
             // Content Wrapper
             #content-wrapper.d-flex.flex-column
                 // Main Content
@@ -26,13 +25,13 @@ html(lang='en')
                         // Page Heading
                         h1.h3.mb-4.text-gray-800=header
                         .row.align-content-center
-                        form.user.col-10(method="POST" action="upload")
+                        form.user.col-10(action="upload" method="POST" enctype="multipart/form-data")
                             .form-group.col-6
                                 select.form-control(name="theme")
                                     - for (var i = 0; i < themeList.length; i++)
                                         option(value=themeList[i].idTheme)= themeList[i].themeName
                             .form-group.col-6
-                                input#file.form-control-file.border(name='sentFile' type='file' accept=".zip" required)
+                                input#file.form-control-file.border(name='zipFile' type='file' accept=".zip" required)
                             .form-group
                             input.col-4.btn.btn-success.btn-user.btn-block(type='submit' value="Send your zip file")
 

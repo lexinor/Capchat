@@ -12,15 +12,19 @@ const hash = crypto.createHash('sha256');
 
 const formidable = require('formidable');
 const util = require('util');
+const unzip = require('unzip');
+const fileUpload = require('express-fileupload');
 const fs = require('fs');
-
 const app = express();
 
 app.use(bodyParser.json()); // pour supporter json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded url
 app.set('view engine', 'pug');
 app.use(cookieParser());
-app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 900000} })); // 900000 = 15 min
+app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 9000000 } })); // 900000 = 15 min
+
+// default options
+app.use(fileUpload());
 
 // Infos : https://stackoverflow.com/questions/23566555/whats-difference-with-express-session-and-cookie-session
 // Infos : https://stackoverflow.com/questions/40755622/how-to-use-session-variable-with-nodejs
@@ -55,11 +59,9 @@ app.get('/upload', (req,res) => {
             if (err) throw err;
             if(rows.length > 0){
                 let themeList = Array.from(rows);
-                console.log(themeList);
-                res.render('upload', { header: "Upload your image set", themeList: themeList }); // Impossible d'utiliser ce tableau dans PUG pour je ne sais quelle raison
+                res.render('upload', { header: "Upload your image set", themeList: themeList });
             }
             else{
-                res.set("token",token);
                 console.log("Empty theme table");
                 res.status(200).end("No themes");
             }
@@ -71,19 +73,23 @@ app.get('/upload', (req,res) => {
 });
 
 app.post('/upload', (req,res) => {
-    var form = new formidable.IncomingForm();
+    console.log(req.files.zipFile);
+    let sentFile = req.files.zipFile;
+    let sentFileName = sentFile.name;
+    sentFile.mv('./uploads/' + sentFileName , (err) => {
+        if(err)
+            res.status(500).send(err);
 
-    form.uploadDir = "./uploads";
-    form.keepExtensions = true;
+        // We need to
+        fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: './uploads/' }));
+        fs.unlink('./uploads/' + sentFileName, (err) => {
+            if (err) throw err;
 
-    form.parse(req, function(err, fields, files) {
-        if (err) throw err;
-
-        // Send result on client
-        res.write('received upload:\n\n');
-        res.end(util.inspect({fields: fields, files: files}));
+            // if no error, file has been deleted successfully
+            res.redirect('/upload?ok');
+        })
     });
-})
+});
 
 app.get('/panel', function(req, res) {
     sess = req.session;
@@ -109,7 +115,7 @@ app.get('/destroy', (req, res) => {
 
         res.redirect('/login');
     }
-})
+});
 
 // OTHER ACTIONS //
 
@@ -177,7 +183,7 @@ app.get('/artists', (req,res) => {
         console.log("No token detected");
         res.status(200).end("No token detected");
     }
-})
+});
 
 // Add an Artist
 app.post('/artists', (req, res) => {
@@ -223,7 +229,7 @@ app.post('/artists', (req, res) => {
         console.log('No token detected');
         res.status(200).redirect('/login');
     }
-})
+});
 
 // -------- THEMES -------- //
 
@@ -253,7 +259,7 @@ app.get('/themes', (req,res) => {
         console.log("No token detected");
         res.end("No token detected");
     }
-})
+});
 
 // Add a Theme
 app.post('/themes', (req, res) => {
@@ -294,7 +300,7 @@ app.post('/themes', (req, res) => {
         console.log('No token detected');
         res.status(200).redirect('/login');
     }
-})
+});
 
 // -------- IMAGE SET -------- //
 
@@ -327,7 +333,7 @@ app.get('/imagesets', (req,res) => {
     }
 
 
-})
+});
 
 // List all imageSets (ID, Nom, idtheme, idartiste, urlusage) for an Artist
 app.get('/imagesets/artist/:artistName', (req,res) => {
@@ -364,12 +370,12 @@ app.get('/imagesets/artist/:artistName', (req,res) => {
         console.log("No artist name detected");
         res.status(200).redirect('/');
     }
-})
+});
 
 // List all imageSets (ID, Nom, idtheme, idartiste, urlusage) for a Theme
 app.get('/imagesets', (req,res) => {
 
-})
+});
 
 // Add imageSet
 app.post('/imagesets', (req,res)=>{
@@ -411,12 +417,12 @@ app.post('/imagesets', (req,res)=>{
         console.log('No token detected');
         res.status(200).redirect('/login');
     }
-})
+});
 
 // Edit Nom, idTheme of imageSet
 app.put('/imagesets/:idTheme', (req,res)=>{
 
-})
+});
 
 // Delete an Image Set
 app.delete('/imagesets/:setName', (req, res) => {
@@ -445,7 +451,7 @@ app.delete('/imagesets/:setName', (req, res) => {
             });
         }
         else {
-            console.log("No token detected")
+            console.log("No token detected");
             res.render('login');
         }
     }
@@ -453,7 +459,7 @@ app.delete('/imagesets/:setName', (req, res) => {
         console.log("No image set name detected");
         res.status(200).redirect('/');
     }
-})
+});
 
 
 
