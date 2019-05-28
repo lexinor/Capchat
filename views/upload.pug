@@ -25,19 +25,26 @@ html(lang='en')
                         // Page Heading
                         h1.h3.mb-4.text-gray-800=header
                         .row.align-content-center
-                        form.user.col-10(action="upload" method="POST" enctype="multipart/form-data")
-                            .form-group.col-6
-                                label#setNameLbl Name of the image set :
-                                input.form-control.form-control-user(name="setName" required)
-                            .form-group.col-6
-                                label#themeLbl Choose your theme :
-                                select.form-control(name="theme" required)
-                                    - for (var i = 0; i < themeList.length; i++)
-                                        option(value=themeList[i].idTheme)= themeList[i].themeName
-                            .form-group.col-6
-                                input#file.form-control-file.border(name='zipFile' type='file' accept=".zip" required)
-                            .form-group
-                            input.col-4.btn.btn-success.btn-user.btn-block(type='submit' value="Send your zip file")
+                        - if(!fileList)
+                            form.user.col-10(action="upload" method="POST" enctype="multipart/form-data")
+                                .form-group.col-6
+                                    label#setNameLbl Name of the image set :
+                                    input.form-control.form-control-user(name="setName" required)
+                                .form-group.col-6
+                                    label#themeLbl Choose your theme :
+                                    select.form-control(name="theme" required)
+                                        - for (var i = 0; i < themeList.length; i++)
+                                            option(value=themeList[i].idTheme)= themeList[i].themeName
+                                .form-group.col-6
+                                    input#file.form-control-file.border(name='zipFile' type='file' accept=".zip" required)
+                                .form-group
+                                input.col-4.btn.btn-success.btn-user.btn-block(type='submit' value="Send your zip file")
+                        - if(fileList)
+                            - console.log(fileList)
+                            ul
+                                each file in fileList
+                                    li
+                                        img(src=folderurl + file)
 
                     // /.container-fluid
                     // End of Main Content

@@ -10,18 +10,20 @@ const pug = require('pug');
 const crypto = require('crypto');
 const hash = crypto.createHash('sha256');
 
-const formidable = require('formidable');
-const util = require('util');
+// Handling files
 const unzip = require('unzip');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
+const fsx = require('fs-extra');
+
+
 const app = express();
 
 app.use(bodyParser.json()); // pour supporter json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); //  pour supporter  encoded url
 app.set('view engine', 'pug');
 app.use(cookieParser());
-app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 9000000 } })); // 900000 = 15 min
+app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cookie: { maxAge: 900000 } })); // 900000 = 15 min
 
 // default options
 app.use(fileUpload());
@@ -54,7 +56,7 @@ app.get('/register', (req,res) => {
 
 app.get('/upload', (req,res) => {
     sess = req.session;
-    if(req.session.token){
+    if(sess.token){
         con.query("SELECT * FROM theme", function (err, rows) {
             if (err) throw err;
             if(rows.length > 0){
@@ -72,28 +74,58 @@ app.get('/upload', (req,res) => {
     }
 });
 
+
+// Get the zip, unzip it to the uploads/user/ folder
+//
+// Move the files into the images/themeName/imageSetName
+// Add the files in the database
+
 app.post('/upload', (req,res) => {
+    let setName = req.body.setName;
+    let idTheme = req.body.theme;
     console.log(req.body);
 
-    let sentFile = req.files.zipFile;
-    let sentFileName = sentFile.name;
+    let uploadDir = "./uploads/";
 
-    // We move from a temp file to the real directory to save it
-    sentFile.mv('./uploads/' + sentFileName , (err) => {
-        if(err)
-            res.status(500).send(err);
+    sess = req.session;
 
-        // Here we unzip the given file
-        fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: './uploads/' }));
+    if(sess.token){
+        let sentFile = req.files.zipFile;
+        let sentFileName = sentFile.name;
 
-        // And here we remove the .zip file after everything is done
-        fs.unlink('./uploads/' + sentFileName, (err) => {
-            if (err) throw err;
 
-            // if no error, file has been deleted successfully
-            res.redirect('/upload?ok');
-        })
-    });
+        // We move from a temp file to the real directory to save it
+        sentFile.mv('./uploads/' + sentFileName, (err) => {
+            if(err)
+                res.status(500).send(err);
+
+            let userUploadDir = uploadDir + sess.login;
+
+            // Here we unzip the given file in images/setName/
+            var stream = fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: './images/' + setName }));
+
+            stream.on('close', function(){
+                // We remove the .zip file in uploads folder
+                fsx.removeSync('./uploads/' + sentFileName);
+
+                // we need to come back to upload page to ask the user which one of the pictures is the weird one
+                let filesArray = fs.readdirSync('./images/' + setName + "/", { withFileTypes: true });
+
+                if(filesArray){
+
+                    console.log("filesArray " + filesArray);
+
+                    res.render('upload', {fileList: filesArray, folderurl: "/images/" + setName + "/"});
+                }
+            });
+
+
+
+        });
+    }
+    else{
+        res.redirect('/login')
+    }
 });
 
 app.get('/panel', function(req, res) {
@@ -603,8 +635,8 @@ app.put('/users/:uId',function (req,res) {
 });
 
 
-app.use(express.static('forms'));
 app.use(express.static('public'));
+app.use(express.static('images'));
 
 app.use(function(req, res, next){
     res.set("Content-Type", "application/json; charset=utf-8");
