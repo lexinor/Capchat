@@ -15,6 +15,7 @@ const unzip = require('unzip');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const fsx = require('fs-extra');
+const request = require('request');
 
 
 const app = express();
@@ -82,10 +83,12 @@ app.get('/upload', (req,res) => {
 
 app.post('/upload', (req,res) => {
     let setName = req.body.setName;
-    let idTheme = req.body.theme;
-    console.log(req.body);
 
-    let uploadDir = "./uploads/";
+    // here we split the theme, because we are sending   idtheme:themeName
+    let theme = req.body.theme.split(':');
+
+    let idTheme = theme[0];
+    let themeName = theme[1];
 
     sess = req.session;
 
@@ -99,28 +102,20 @@ app.post('/upload', (req,res) => {
             if(err)
                 res.status(500).send(err);
 
-            let userUploadDir = uploadDir + sess.login;
-
             // Here we unzip the given file in images/setName/
-            var stream = fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: './images/' + setName }));
+            var stream = fs.createReadStream('./uploads/' + sentFileName).pipe(unzip.Extract({ path: "./public/images/" + themeName + "/" + setName + "/" }));
 
             stream.on('close', function(){
                 // We remove the .zip file in uploads folder
                 fsx.removeSync('./uploads/' + sentFileName);
 
                 // we need to come back to upload page to ask the user which one of the pictures is the weird one
-                let filesArray = fs.readdirSync('./images/' + setName + "/", { withFileTypes: true });
+                let filesArray = fs.readdirSync("./public/images/" + themeName + "/" + setName + "/", { withFileTypes: true });
 
                 if(filesArray){
-
-                    console.log("filesArray " + filesArray);
-
-                    res.render('upload', {fileList: filesArray, folderurl: "/images/" + setName + "/"});
+                    res.render('upload', {fileList: filesArray, folderurl: "images/" + themeName + "/" + setName + "/", chosenTheme: themeName, themeId: idTheme, setName:setName });
                 }
             });
-
-
-
         });
     }
     else{
@@ -128,11 +123,74 @@ app.post('/upload', (req,res) => {
     }
 });
 
+app.post('/endUpload', (req, res) => {
+    sess = req.session;
+    if(req.session.token){
+        obj = JSON.parse(JSON.stringify(req.body,null," "));
+
+        // We need to get the Artist ID for the current user
+        let options = {
+            url: 'http://localhost:8080/artists/' + sess.login,
+            headers: {
+                'token': sess.token
+            }
+        };
+        request(options,(err,response,body) => {
+            if(err) throw err;
+
+
+
+            let resBody = body;
+            console.log(resBody);
+            let setName = obj.setName;
+            let idArtist = body;
+            let themeId = obj.themeId;
+            let fileList = obj.fileList;
+            let folderUrl = obj.folderurl;
+            let singularImage = obj.singular;
+            let imgHint = obj.hint;
+
+            let options2 = {
+                url: 'http://localhost:8080/artists/' + sess.login,
+                headers: {
+                    'token': sess.token
+                }
+            };
+            request(options2,(err,res2,body2) => {
+                if(err) throw err;
+
+            });
+
+
+            res.end();
+        });
+    }
+    else{
+        res.redirect('/login')
+    }
+})
+
 app.get('/panel', function(req, res) {
     sess = req.session;
     if(req.session.token){
         console.log("calling panel.pug");
-        res.render('panel');
+
+        var options = {
+            url: 'http://localhost:8080/imagesets/artist/' + sess.login,
+            headers: {
+                'token': sess.token
+            }
+        };
+
+        request(options,(err,response,body) => {
+            if(err) throw err;
+
+            let resBody = body;
+            let imgSets = resBody;
+            console.log(imgSets);
+            res.render('panel', { imageSets: imgSets });
+        })
+
     }
     else{
         res.redirect('/login')
@@ -212,8 +270,29 @@ app.get('/artists', (req,res) => {
             if (err) throw err;
             console.log(rows);
             res.set("token",token);
-            res.json(rows);
-            res.status(200).end("Sucess");
+            res.json(rows).end();
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.status(200).end("No token detected");
+    }
+});
+
+// Get the ID for an Artist by uLogin
+app.get('/artists/:uLogin', (req,res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        let uLogin = req.params.uLogin;
+        res.set("Content-Type", "application/json; charset=utf-8");
+        let sql = "SELECT idArtist FROM artist, user WHERE user.uLogin=? AND UserId=uId";
+        con.query(sql, uLogin, function (err, rows) {
+            if (err) throw err;
+            console.log(rows);
+            res.set("token",token);
+            res.json(rows).end();
         });
     }
     else {
@@ -227,7 +306,7 @@ app.post('/artists', (req, res) => {
     let host = req.headers['init'];
     let token = req.headers['token'];
 
-    if(token != "" || req.session.token) {
+    if(token) {
         res.set("Content-Type", "application/json; charset=utf-8");
         obj = JSON.parse(JSON.stringify(req.body, null, "  "));
         console.log("login : " + obj.login);
@@ -253,8 +332,6 @@ app.post('/artists', (req, res) => {
                         res.status(200).end("No artist added");
                     }
                 });
-                res.set("token",token);
-                res.status(200).end("Artist not added");
             }
             else{
                 console.log("Cannot find the requested user");
@@ -282,13 +359,42 @@ app.get('/themes', (req,res) => {
             if(rows.length > 0){
                 console.log(rows);
                 res.set("token",token);
-                res.json(rows);
-                res.status(200).end("Sucess");
+                res.json(rows).end();
             }
             else{
                 res.set("token",token);
                 console.log("Empty theme table");
-                res.status(200).end("No themes");
+                res.json(rows).end();
+            }
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.end("No token detected");
+    }
+});
+
+// Get a theme by ID
+app.get('/themes/:idTheme', (req,res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+
+    if(token || req.session.token){
+        let idTheme = req.params.idTheme;
+        console.log(idTheme);
+        res.set("Content-Type", "application/json; charset=utf-8");
+        con.query("SELECT themeName FROM theme WHERE idTheme=?", idTheme,function (err, rows) {
+            if (err) throw err;
+            if(rows.length > 0){
+                console.log(rows);
+                res.set("token",token);
+                res.json(rows).end();
+            }
+            else{
+                res.set("token",token);
+                console.log("Can't find a theme with this ID");
+                res.status(200).end("Can't find a theme with this ID");
             }
         });
     }
@@ -341,6 +447,35 @@ app.post('/themes', (req, res) => {
 
 // -------- IMAGE SET -------- //
 
+// Get all infos for one imageset by his name
+app.get('/imagesets/:setName', (req,res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        res.set("Content-Type", "application/json; charset=utf-8");
+        let setName = req.params.setName;
+        con.query("SELECT * FROM imageset WHERE setName=?", setName , function (err, rows) {
+            if (err) throw err;
+            if(rows.length > 0){
+                console.log(rows);
+                res.set("token",token);
+                res.json(rows).end();
+            }
+            else{
+                res.set("token",token);
+                console.log("Empty theme table");
+                res.status(200).end("No themes");
+            }
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.end("No token detected");
+    }
+});
+
+
 // List all imageSets (ID, Nom, idtheme, idartiste, urlusage)
 app.get('/imagesets', (req,res) => {
     let host = req.headers['init'];
@@ -368,8 +503,6 @@ app.get('/imagesets', (req,res) => {
         console.log("No token detected");
         res.end("No token detected");
     }
-
-
 });
 
 // List all imageSets (ID, Nom, idtheme, idartiste, urlusage) for an Artist
@@ -388,13 +521,12 @@ app.get('/imagesets/artist/:artistName', (req,res) => {
                 if(rows.length > 0){
                     console.log(rows);
                     res.set("token",token);
-                    res.json(rows);
-                    res.status(200).end("Sucess");
+                    res.json(rows).end();
                 }
                 else{
                     res.set("token",token);
                     console.log("Empty image set table");
-                    res.status(200).end("No image set recieved");
+                    res.json(rows).end();
                 }
             });
         }
@@ -427,7 +559,7 @@ app.post('/imagesets', (req,res)=>{
         con.query(sql, function (err, result) {
             if(result.length == 0) {
 
-                let sql2 = mysql.format("INSERT INTO imageset (setName, idTheme, idArtist) VALUES (?,?,?);", [obj.setName, obj.themeId, obj.artistId]);
+                let sql2 = mysql.format("INSERT INTO imageset (setName, setUrl, idTheme, idArtist) VALUES (?,?,?,?);", [obj.setName, obj.setUrl, obj.themeId, obj.artistId]);
                 con.query(sql2, function (err, result) {
                     if (err) throw err;
                     if (result.affectedRows > 0) {
@@ -498,7 +630,50 @@ app.delete('/imagesets/:setName', (req, res) => {
     }
 });
 
+// IMAGES //
 
+// Add an image
+
+app.post('/image', (req,res)=>{
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token) {
+        res.set("Content-Type", "application/json; charset=utf-8");
+        obj = JSON.parse(JSON.stringify(req.body, null, "  "));
+
+        let sql = mysql.format("SELECT * FROM imageset WHERE setName=? AND idTheme=? AND idArtist=?",[obj.setName, obj.themeId, obj.artistId] );
+        con.query(sql, function (err, result) {
+            if(result.length == 0) {
+
+                let sql2 = mysql.format("INSERT INTO imageset (setName, idTheme, idArtist) VALUES (?,?,?);", [obj.setName, obj.themeId, obj.artistId]);
+                con.query(sql2, function (err, result) {
+                    if (err) throw err;
+                    if (result.affectedRows > 0) {
+                        console.log(obj.setName + " added as image set");
+                        res.set("token",token);
+                        res.status(200).end("Added image set");
+                    } else {
+                        console.log("No image set added");
+                        res.set("token",token);
+                        res.status(200).end("No image set added");
+                    }
+                });
+                res.set("token",token);
+                res.status(200).end("Image set added");
+            }
+            else{
+                res.set("token",token);
+                console.log("Image set already exists");
+                res.status(200).redirect('/')
+            }
+        });
+    }
+    else {
+        console.log('No token detected');
+        res.status(200).redirect('/login');
+    }
+});
 
 // OLD METHODS //
 
