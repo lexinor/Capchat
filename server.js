@@ -17,6 +17,9 @@ const fs = require('fs');
 const fsx = require('fs-extra');
 const request = require('request');
 
+// CAPCHAT STUFF
+const pickRandom = require('pick-random');
+
 
 const app = express();
 
@@ -43,8 +46,74 @@ const con = mysql.createConnection({
 
 // BASIC NAVIGATION PAGES //
 
+app.get('/capchatold', function(req, res) {
+    res.render('capchat_old');
+});
+
+app.get('/capchat/:setName', function(req, res) {
+
+    sess = req.session;
+    if(sess.token){
+        let setName = req.params.setName;
+        let options = {
+            url: 'http://localhost:8080/imagesets/' + setName,
+            headers: {
+                'token': sess.token
+            }
+        };
+
+        // We are calling the API to get the wanted image set
+        request(options,(err,response,body) => {
+            if(err) throw err;
+            let imgSet = JSON.parse(body);
+
+            let setUrl = JSON.parse(JSON.stringify(imgSet))['setUrl'];
+
+            // Now we are going to read all the image for the imageSet
+            let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+            filesArray = pickRandom(filesArray, { count: 9} );
+            console.log(filesArray);
+
+            res.render('capchat', { setUrl:setUrl, images: filesArray });
+        });
+    }
+    else{
+        res.redirect('/login');
+    }
+});
+
+app.get('/win', function(req, res) {
+    res.render('win');
+});
+
 app.get('/', function(req, res) {
     res.render('login');
+});
+
+app.get('/visitor', function(req, res) {
+    sess = req.session;
+    if(req.session.token){
+        console.log("calling visitor.pug");
+
+        let options = {
+            url: 'http://localhost:8080/imagesets',
+            headers: {
+                'token': sess.token
+            }
+        };
+
+        // here we call the API to add the imageset
+        request(options,(err,response,body) => {
+            if (err) throw err;
+
+            let imageSets = JSON.parse(body);
+            console.log(imageSets);
+            res.render('index', { imageSets: imageSets });
+        });
+    }
+    else{
+        res.redirect('/login')
+    }
 });
 
 app.get('/login', (req,res) => {
@@ -127,42 +196,85 @@ app.post('/endUpload', (req, res) => {
     sess = req.session;
     if(req.session.token){
         obj = JSON.parse(JSON.stringify(req.body,null," "));
+        let fileList = JSON.parse(JSON.stringify(obj.fileList));
+        let singularImage = obj.singular;
+        let imgHint = obj.hint;
 
         // We need to get the Artist ID for the current user
-        let options = {
-            url: 'http://localhost:8080/artists/' + sess.login,
-            headers: {
-                'token': sess.token
-            }
-        };
+        let options = { url: 'http://localhost:8080/artists/' + sess.login, headers: { 'token': sess.token }};
+
+        // here we call the API to add the imageset
         request(options,(err,response,body) => {
             if(err) throw err;
 
-
-
-            let resBody = body;
-            console.log(resBody);
             let setName = obj.setName;
-            let idArtist = body;
+            let idArtist = JSON.parse(body);
             let themeId = obj.themeId;
-            let fileList = obj.fileList;
             let folderUrl = obj.folderurl;
-            let singularImage = obj.singular;
-            let imgHint = obj.hint;
 
             let options2 = {
-                url: 'http://localhost:8080/artists/' + sess.login,
-                headers: {
-                    'token': sess.token
-                }
+                url: 'http://localhost:8080/imagesets',
+                form: {
+                    "setName": setName,
+                    "setUrl": folderUrl,
+                    "themeId": themeId,
+                    "artistId": idArtist
+                },
+                headers: {'Content-Type': 'application/json','token': sess.token }
             };
-            request(options2,(err,res2,body2) => {
-                if(err) throw err;
+            request.post(options2, (err,httpResponse,body) => {
+                // Then after adding the set
+                // We need to add all the images informations in the database
 
+                // We need to get the idSet
+                // GETTING THE SET ID //
+                let getOption = { url: 'http://localhost:8080/imagesets/'+setName, headers: { 'token': sess.token }};
+                request(getOption,(err,response,body) => {
+
+                    let idSet = body;
+                    console.log("File List : " + fileList);
+
+                    for(let i = 0; i < fileList.length; i++){
+                        console.log("file " + fileList[i]);
+                        let optionImg = null;
+                        if(singularImage == fileList[i]){
+                            optionImg = { url: 'http://localhost:8080/image/', form: {
+                                    "nomImg": fileList[i],
+                                    "indice": obj.hint,
+                                    "idSet": idSet
+                                },
+                                headers: {
+                                    'token': sess.token
+                                }
+                            };
+                        }else{
+                            optionImg = { url: 'http://localhost:8080/image/', form: {
+                                    "nomImg": fileList[i],
+                                    "indice": null,
+                                    "idSet": idSet
+                                },
+                                headers: {
+                                    'token': sess.token
+                                }
+                            };
+                        }
+                        console.log("optionImg : " + optionImg);
+                        if(optionImg != null){
+
+                            // TODO: REPRENDRE ICI -- BESOIN DE FIXER LE FORMAT DE fileList pour pouvoir faire les ajouts en base
+                            // Here we call the API to add the image
+                            // ADDING THE IMAGES TO THE DATABASE
+                            request.post(optionImg,(err,response,body) => {
+                                if (err) throw err;
+
+                                console.log(body);
+                                res.redirect('/panel');
+
+                            });
+                        }
+                    }
+                })
             });
-
-
-            res.end();
         });
     }
     else{
@@ -185,12 +297,10 @@ app.get('/panel', function(req, res) {
         request(options,(err,response,body) => {
             if(err) throw err;
 
-            let resBody = body;
-            let imgSets = resBody;
-            console.log(imgSets);
+            let imgSets = JSON.parse(body);
+            //console.log("img sets : " + imgSets);
             res.render('panel', { imageSets: imgSets });
         })
-
     }
     else{
         res.redirect('/login')
@@ -229,22 +339,37 @@ app.post('/login', function(req, res) {
             uId = rows[0].uId;
 
             let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
-            console.log(token);
+            // console.log(token);
             if(uId != null){
                 let sql2 = mysql.format("UPDATE user SET last_token=?, date_token=NOW() WHERE uId=?",[token, uId]);
-                con.query(sql2, function (err, rows, fields) {
+                con.query(sql2, function (err, rows2, fields) {
                     if (err) throw err;
-                    if(rows.affectedRows > 0){
+                    if(rows2.affectedRows > 0){
                         console.log("Update success");
+                        let sql3 = mysql.format("SELECT * FROM artist WHERE UserId=?",uId);
+                        con.query(sql3, function (err, rows3, fields) {
+                            if (err) throw err;
+                            if(rows3.length > 0){
+                                console.log("User is an artist");
+                                res.set("token",token);
+                                req.session.login = obj.login;
+                                req.session.token = token;
+                                res.status(200).redirect('/panel');
+
+                            }
+                            else{
+                                res.set("token",token);
+                                req.session.login = obj.login;
+                                req.session.token = token;
+                                res.status(200).redirect('/visitor');
+                                console.log("User is a simple user");
+                            }
+                        });
                     }
                     else{
                         console.log("Update failed");
                     }
                 });
-                res.set("token",token);
-                req.session.login = obj.login;
-                req.session.token = token;
-                res.status(200).redirect('/panel');
             }
             else{
                 res.status(200).redirect('/');
@@ -286,13 +411,13 @@ app.get('/artists/:uLogin', (req,res) => {
 
     if(token){
         let uLogin = req.params.uLogin;
-        res.set("Content-Type", "application/json; charset=utf-8");
         let sql = "SELECT idArtist FROM artist, user WHERE user.uLogin=? AND UserId=uId";
         con.query(sql, uLogin, function (err, rows) {
             if (err) throw err;
-            console.log(rows);
+            console.log(rows[0].idArtist);
+
             res.set("token",token);
-            res.json(rows).end();
+            res.json(rows[0].idArtist).end();
         });
     }
     else {
@@ -460,7 +585,7 @@ app.get('/imagesets/:setName', (req,res) => {
             if(rows.length > 0){
                 console.log(rows);
                 res.set("token",token);
-                res.json(rows).end();
+                res.json(rows[0]).end();
             }
             else{
                 res.set("token",token);
@@ -519,7 +644,6 @@ app.get('/imagesets/artist/:artistName', (req,res) => {
             con.query(sql, [artistName], function (err, rows) {
                 if (err) throw err;
                 if(rows.length > 0){
-                    console.log(rows);
                     res.set("token",token);
                     res.json(rows).end();
                 }
@@ -546,6 +670,34 @@ app.get('/imagesets', (req,res) => {
 
 });
 
+app.get('/imagesets/:setName', (req,res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        let setName = req.params.setName;
+        res.set("Content-Type", "application/json; charset=utf-8");
+
+        let sql = "SELECT * FROM `imageset` WHERE setName=?";
+        con.query(sql, setName, function (err, rows) {
+            if (err) throw err;
+            if(rows.length > 0){
+                res.set("token",token);
+                res.json(rows).end();
+            }
+            else{
+                res.set("token",token);
+                console.log("Empty image set table");
+                res.json(rows).end();
+            }
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.end("No token detected");
+    };
+});
+
 // Add imageSet
 app.post('/imagesets', (req,res)=>{
     let host = req.headers['init'];
@@ -558,7 +710,6 @@ app.post('/imagesets', (req,res)=>{
         let sql = mysql.format("SELECT * FROM imageset WHERE setName=? AND idTheme=? AND idArtist=?",[obj.setName, obj.themeId, obj.artistId] );
         con.query(sql, function (err, result) {
             if(result.length == 0) {
-
                 let sql2 = mysql.format("INSERT INTO imageset (setName, setUrl, idTheme, idArtist) VALUES (?,?,?,?);", [obj.setName, obj.setUrl, obj.themeId, obj.artistId]);
                 con.query(sql2, function (err, result) {
                     if (err) throw err;
@@ -572,8 +723,6 @@ app.post('/imagesets', (req,res)=>{
                         res.status(200).end("No image set added");
                     }
                 });
-                res.set("token",token);
-                res.status(200).end("Image set added");
             }
             else{
                 res.set("token",token);
@@ -642,30 +791,17 @@ app.post('/image', (req,res)=>{
         res.set("Content-Type", "application/json; charset=utf-8");
         obj = JSON.parse(JSON.stringify(req.body, null, "  "));
 
-        let sql = mysql.format("SELECT * FROM imageset WHERE setName=? AND idTheme=? AND idArtist=?",[obj.setName, obj.themeId, obj.artistId] );
+        let sql = mysql.format("INSERT INTO image (nomImg, indice, idSet) VALUES (?,?,?);", [obj.nomImg, obj.indice, obj.idSet]);
         con.query(sql, function (err, result) {
-            if(result.length == 0) {
-
-                let sql2 = mysql.format("INSERT INTO imageset (setName, idTheme, idArtist) VALUES (?,?,?);", [obj.setName, obj.themeId, obj.artistId]);
-                con.query(sql2, function (err, result) {
-                    if (err) throw err;
-                    if (result.affectedRows > 0) {
-                        console.log(obj.setName + " added as image set");
-                        res.set("token",token);
-                        res.status(200).end("Added image set");
-                    } else {
-                        console.log("No image set added");
-                        res.set("token",token);
-                        res.status(200).end("No image set added");
-                    }
-                });
+            if (err) throw err;
+            if (result.affectedRows > 0) {
+                console.log(obj.nomImg + " added to image table");
                 res.set("token",token);
-                res.status(200).end("Image set added");
-            }
-            else{
+                res.status(200).end("added image");
+            } else {
+                console.log("No image added");
                 res.set("token",token);
-                console.log("Image set already exists");
-                res.status(200).redirect('/')
+                res.status(200).end("No image added");
             }
         });
     }

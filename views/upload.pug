@@ -76,7 +76,6 @@ html(lang='en')
                                 .form-group
                                 input.col-4.btn.btn-success.btn-user.btn-block(type='submit' value="Send your zip file")
                         - if(fileList)
-                            - console.log(fileList)
                             form.user(action="endUpload" method="POST" enctype="application/json")
                                 .form-group.col-6
                                 h4= "Theme : "+chosenTheme

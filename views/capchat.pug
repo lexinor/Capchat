@@ -1,0 +1,22 @@
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Projet CapChat
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', type='text/html', media='screen', href='main.css')
+        link(href='/css/style.css', type='text/html', rel='stylesheet')
+    body#body(onload='InitCaptcha();')
+        #progressbar
+            #bar
+        p#cpt
+        p#msg
+        p#indice
+
+        - for (var img, index of images)
+            - if (index == 3 || index == 6 || index == 9)
+                br
+                img(width="100" height="100" src="/"+setUrl+img)
+            - else
+                img(width="100" height="100" src="/"+setUrl+img)
+        script(type='application/javascript', src='/js/captcha.js')

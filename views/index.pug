@@ -11,15 +11,14 @@ html(lang='en')
                     .sidebar-brand-icon.rotate-n-15
                         i.fas.fa-laugh-wink
                     .sidebar-brand-text.mx-3
-                        | SB Admin
-                        sup 2
+                        | Home page for users
                 // Divider
                 hr.sidebar-divider.my-0
                 // Nav Item - Dashboard
                 li.nav-item
-                    a.nav-link(href='index.html')
+                    a.nav-link(href='/destroy')
                         i.fas.fa-fw.fa-tachometer-alt
-                        span Dashboard
+                        span Disconnect
                 // Divider
                 hr.sidebar-divider
                 // Heading
@@ -65,7 +64,17 @@ html(lang='en')
                     // Begin Page Content
                     .container-fluid
                         // Page Heading
-                        h1.h3.mb-4.text-gray-800 Blank Page
+                        h1.h3.mb-4.text-gray-800 Welcome to the user panel
+
+                        p Here you can see all the image sets created by many artists
+                        hr
+                        h3 List of all the image sets
+                        - if(imageSets.length > 0)
+                            ul.list-group.list-group-flush
+                                - for (var i = 0; i < imageSets.length; i++)
+                                    li.list-group-item(value=imageSets[i]['idSet'])=imageSets[i]['setName']
+                        - else
+                            p There are no image sets for the moment
                     // /.container-fluid
                     // End of Main Content
                     // Footer
