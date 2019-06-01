@@ -1,16 +1,14 @@
 img:hover{
-    border-color: red;
-    border-width: thin;
-    border-style: dotted;
+    border-color: #1cc88a;
+    border-style: groove;
 }
 
 #progressbar{
-    width: 30%;
-    background-color: darkred;
+    width: 100%;
+    height: 20%;
 }
 
 #bar{
     width: 100%;
     height: 30px;
-    background-color: red;
 }

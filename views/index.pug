@@ -11,7 +11,7 @@ html(lang='en')
                     .sidebar-brand-icon.rotate-n-15
                         i.fas.fa-laugh-wink
                     .sidebar-brand-text.mx-3
-                        | Home page for users
+                        | User page
                 // Divider
                 hr.sidebar-divider.my-0
                 // Nav Item - Dashboard
@@ -34,18 +34,6 @@ html(lang='en')
                             h6.collapse-header Custom Components:
                             a.collapse-item(href='buttons.html') Buttons
                             a.collapse-item(href='cards.html') Cards
-                // Nav Item - Utilities Collapse Menu
-                li.nav-item
-                    a.nav-link.collapsed(href='#', data-toggle='collapse', data-target='#collapseUtilities', aria-expanded='true', aria-controls='collapseUtilities')
-                        i.fas.fa-fw.fa-wrench
-                        span Utilities
-                    #collapseUtilities.collapse(aria-labelledby='headingUtilities', data-parent='#accordionSidebar')
-                        .bg-white.py-2.collapse-inner.rounded
-                            h6.collapse-header Custom Utilities:
-                            a.collapse-item(href='utilities-color.html') Colors
-                            a.collapse-item(href='utilities-border.html') Borders
-                            a.collapse-item(href='utilities-animation.html') Animations
-                            a.collapse-item(href='utilities-other.html') Other
                 // Divider
 
                 .text-center.d-none.d-md-inline
@@ -73,6 +61,8 @@ html(lang='en')
                             ul.list-group.list-group-flush
                                 - for (var i = 0; i < imageSets.length; i++)
                                     li.list-group-item(value=imageSets[i]['idSet'])=imageSets[i]['setName']
+                                        .col-4-offset
+                                            a.btn.btn-info(href="/capchat/" + imageSets[i]['setName']) View capchat
                         - else
                             p There are no image sets for the moment
                     // /.container-fluid
@@ -83,27 +73,5 @@ html(lang='en')
                             .copyright.text-center.my-auto
                                 span Copyright © Your Website 2019
                     // End of Footer
-                    // End of Content Wrapper
-                    // End of Page Wrapper
-                    // Scroll to Top Button
-                    a.scroll-to-top.rounded(href='#page-top')
-                        i.fas.fa-angle-up
-                    // Logout Modal
-                    #logoutModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                        .modal-dialog(role='document')
-                            .modal-content
-                                .modal-header
-                                    h5#exampleModalLabel.modal-title Ready to Leave?
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
-                                        span(aria-hidden='true') ×
-                                .modal-body Select "Logout" below if you are ready to end your current session.
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
-                                    a.btn.btn-primary(href='login.html') Logout
                     // Bootstrap core JavaScript
-                    script(src='vendor/jquery/jquery.min.js')
-                    script(src='vendor/bootstrap/js/bootstrap.bundle.min.js')
-                    // Core plugin JavaScript
-                    script(src='vendor/jquery-easing/jquery.easing.min.js')
-                    // Custom scripts for all pages
-                    script(src='js/sb-admin-2.min.js')
+                    include includes/footer.pug

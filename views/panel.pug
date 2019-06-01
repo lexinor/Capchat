@@ -60,15 +60,18 @@ html(lang='en')
                     // Begin Page Content
                     .container-fluid
                         // Page Heading
+                        - if(errorMsg)
+                            .alert.alert-danger(role='alert')=errorMsg
                         h1.h3.mb-4.text-gray-800 Welcome to the user panel
                         a.btn.btn-success(href="/upload") Send a CapChat with a zip file
                         hr
                         h3 List of your image sets
-                        ul.list-group.list-group-flush
-                            - for (var i = 0; i < imageSets.length; i++)
-                                li.list-group-item(value=imageSets[i]['idSet'])=imageSets[i]['setName']
-                                    .col-4-offset
-                                        a.btn.btn-info(href="/capchat/"+imageSets[i]['setName']) View capchat
+                        - if(imageSets)
+                            ul.list-group.list-group-flush
+                                - for (var i = 0; i < imageSets.length; i++)
+                                    li.list-group-item(value=imageSets[i]['idSet'])=imageSets[i]['setName']
+                                        .col-4-offset
+                                            a.btn.btn-info(href="/capchat/"+imageSets[i]['setName']) View capchat
                     // /.container-fluid
                     // End of Main Content
                     // Footer

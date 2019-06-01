@@ -1,13 +1,66 @@
 doctype html
-html
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Success after Captchat
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        link(rel='stylesheet', type='text/html', media='screen', href='main.css')
-        link(href='style.css', type='text/css', rel='stylesheet')
-    body
-        h1 You've successfully responded to the capchat
-        br
-        a(href='/') Retour
+html(lang='en')
+    include includes/header.pug
+    title Capchat
+    body#page-top
+        // Page Wrapper
+        #wrapper
+            // Sidebar
+            ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+                // Sidebar - Brand
+                a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='/')
+                    .sidebar-brand-icon.rotate-n-15
+                        i.fas.fa-laugh-wink
+                    .sidebar-brand-text.mx-3
+                        | Capchat Sample
+                // Divider
+                hr.sidebar-divider.my-0
+                // Nav Item - Dashboard
+                li.nav-item
+                    a.nav-link(href='/destroy')
+                        i.fas.fa-fw.fa-tachometer-alt
+                        span Disconnect
+                // Divider
+                hr.sidebar-divider
+                // Heading
+                .sidebar-heading
+                    | Interface
+                // Nav Item - Pages Collapse Menu
+                li.nav-item
+                    a.nav-link.collapsed(href='#', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='true', aria-controls='collapseTwo')
+                        i.fas.fa-fw.fa-cog
+                        span Pages
+                    #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionSidebar')
+                        .bg-white.py-2.collapse-inner.rounded
+                            h6.collapse-header Pages :
+                            a.collapse-item(href='/panel') Panel
+                // Divider
+
+                .text-center.d-none.d-md-inline
+                    button#sidebarToggle.rounded-circle.border-0
+            // End of Sidebar
+            // Content Wrapper
+            #content-wrapper.d-flex.flex-column
+                // Main Content
+                #content
+                    // Topbar
+                    nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+                        // Sidebar Toggle (Topbar)
+                        button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+                            i.fa.fa-bars
+                    // End of Topbar
+                    // Begin Page Content
+                    h1 You've successfully responded to the capchat
+                    hr
+                    a.btn.btn-primary(href='/') Retour
+                    // /.container-fluid
+                    // End of Main Content
+                    // Footer
+                    footer.sticky-footer.bg-white
+                        .container.my-auto
+                            .copyright.text-center.my-auto
+                                span Copyright © Your Website 2019
+                    // End of Footer
+                    // Bootstrap core JavaScript
+                    script(type='application/javascript', src='/js/captcha.js')
+                    include includes/footer.pug

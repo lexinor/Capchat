@@ -55,26 +55,43 @@ app.get('/capchat/:setName', function(req, res) {
     sess = req.session;
     if(sess.token){
         let setName = req.params.setName;
-        let options = {
-            url: 'http://localhost:8080/imagesets/' + setName,
-            headers: {
-                'token': sess.token
-            }
-        };
 
-        // We are calling the API to get the wanted image set
+        // API call to get the image set for the given setName
+        let options = { url: 'http://localhost:8080/imagesets/' + setName, headers: {'token': sess.token } };
+
+        // Starting request
         request(options,(err,response,body) => {
             if(err) throw err;
+
             let imgSet = JSON.parse(body);
+            let setUrl = imgSet['setUrl'];
+            let idSet = imgSet['idSet'];
 
-            let setUrl = JSON.parse(JSON.stringify(imgSet))['setUrl'];
+            console.log(setUrl);
 
-            // Now we are going to read all the image for the imageSet
-            let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
-            filesArray = pickRandom(filesArray, { count: 9} );
-            console.log(filesArray);
+            // API Call to get the singular Image of the given set
+            let options = { url: 'http://localhost:8080/image/' + idSet, headers: {'token': sess.token } };
 
-            res.render('capchat', { setUrl:setUrl, images: filesArray });
+            // STARTING THE SECOND CALL
+            request(options,(err,response,body) => {
+
+                // Here we are getting the image informations
+                let singularImage = JSON.parse(body);
+                console.log(singularImage);
+                let imgHint = singularImage['indice'];
+                singularImage = singularImage['nomImg'];
+
+
+                console.log(imgHint);
+
+                // Now we are going to read all the image for the imageSet folder
+                let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+                filesArray = pickRandom(filesArray, { count: 9} );
+
+                //res.render('capchat');
+                res.render('capchat', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage });
+
+            });
         });
     }
     else{
@@ -87,7 +104,16 @@ app.get('/win', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-    res.render('login');
+    sess = req.session;
+    if(sess.token){
+        if(sess.rank == "artist")
+            res.redirect('/panel');
+        else if(sess.rank == "user")
+            res.redirect('/visitor')
+    }
+    else{
+        res.redirect('/login');
+    }
 });
 
 app.get('/visitor', function(req, res) {
@@ -102,12 +128,11 @@ app.get('/visitor', function(req, res) {
             }
         };
 
-        // here we call the API to add the imageset
+        // here we call the API to get the imageset
         request(options,(err,response,body) => {
             if (err) throw err;
 
             let imageSets = JSON.parse(body);
-            console.log(imageSets);
             res.render('index', { imageSets: imageSets });
         });
     }
@@ -180,9 +205,12 @@ app.post('/upload', (req,res) => {
 
                 // we need to come back to upload page to ask the user which one of the pictures is the weird one
                 let filesArray = fs.readdirSync("./public/images/" + themeName + "/" + setName + "/", { withFileTypes: true });
-
-                if(filesArray){
+                console.log();
+                if(filesArray.length >= 9){
                     res.render('upload', {fileList: filesArray, folderurl: "images/" + themeName + "/" + setName + "/", chosenTheme: themeName, themeId: idTheme, setName:setName });
+                }
+                else{
+                    res.render('panel', { errorMsg: "You need to upload at least 9 images" });
                 }
             });
         });
@@ -288,7 +316,7 @@ app.post('/endUpload', (req, res) => {
 
 app.get('/panel', function(req, res) {
     sess = req.session;
-    if(req.session.token){
+    if(req.session.token != "" && req.session.rank == "artist"){
         console.log("calling panel.pug");
 
         var options = {
@@ -302,7 +330,6 @@ app.get('/panel', function(req, res) {
             if(err) throw err;
 
             let imgSets = JSON.parse(body);
-            //console.log("img sets : " + imgSets);
             res.render('panel', { imageSets: imgSets });
         })
     }
@@ -358,13 +385,14 @@ app.post('/login', function(req, res) {
                                 res.set("token",token);
                                 req.session.login = obj.login;
                                 req.session.token = token;
+                                req.session.rank = "artist";
                                 res.status(200).redirect('/panel');
-
                             }
                             else{
                                 res.set("token",token);
                                 req.session.login = obj.login;
                                 req.session.token = token;
+                                req.session.rank = "user";
                                 res.status(200).redirect('/visitor');
                                 console.log("User is a simple user");
                             }
@@ -815,6 +843,33 @@ app.post('/image', (req,res)=>{
     else {
         console.log('No token detected');
         res.status(200).redirect('/login');
+    }
+});
+
+app.get('/image/:idSet', (req,res) => {
+    let host = req.headers['init'];
+    let token = req.headers['token'];
+
+    if(token){
+        res.set("Content-Type", "application/json; charset=utf-8");
+        let idSet = req.params.idSet;
+        con.query("SELECT * FROM image WHERE idSet=? AND indice !='' ", idSet, function (err, rows) {
+            if (err) throw err;
+            if(rows.length > 0){
+                console.log(rows);
+                res.set("token",token);
+                res.json(rows[0]).end();
+            }
+            else{
+                res.set("token",token);
+                console.log("Empty theme table");
+                res.status(200).end("No themes");
+            }
+        });
+    }
+    else {
+        console.log("No token detected");
+        res.end("No token detected");
     }
 });
 

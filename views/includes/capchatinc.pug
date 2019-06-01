@@ -1,0 +1,14 @@
+.container-fluid
+    .row
+        #progressbar.progress
+            #bar.progress-bar.progress-bar-striped.progress-bar-animated
+        h2#cpt.text-center
+    .row.align-content-center
+        .col-xl-3.col-lg-5.col-md-8.col-sm-8.col-12
+            - for (var img of images)
+            img.rounded(id=img width="125" height="125" src="/" + seturl + img onclick="IsSelectedImgGood(this,'"+singular+"')")
+    .row
+        h3#indice="Your hint is : "+hint
+    .row
+        h3#msg
+script(type='application/javascript', src='/js/captcha.js')
