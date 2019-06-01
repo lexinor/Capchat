@@ -196,6 +196,7 @@ app.post('/endUpload', (req, res) => {
     sess = req.session;
     if(req.session.token){
         obj = JSON.parse(JSON.stringify(req.body,null," "));
+
         let fileList = JSON.parse(JSON.stringify(obj.fileList));
         let singularImage = obj.singular;
         let imgHint = obj.hint;
@@ -205,7 +206,9 @@ app.post('/endUpload', (req, res) => {
 
         // here we call the API to add the imageset
         request(options,(err,response,body) => {
-            if(err) throw err;
+            if(err){
+                console.log(err);
+            }
 
             let setName = obj.setName;
             let idArtist = JSON.parse(body);
@@ -230,22 +233,28 @@ app.post('/endUpload', (req, res) => {
                 // GETTING THE SET ID //
                 let getOption = { url: 'http://localhost:8080/imagesets/'+setName, headers: { 'token': sess.token }};
                 request(getOption,(err,response,body) => {
+                    if (err){
+                        console.log("// GETTING THE SET ID FAILED");
+                        console.log(err);
 
-                    let idSet = body;
-                    console.log("File List : " + fileList);
+                    }
+                    let setInfos = JSON.parse(body);
+                    let idSet = setInfos.idSet;
 
-                    for(let i = 0; i < fileList.length; i++){
-                        console.log("file " + fileList[i]);
+                    fileList = JSON.parse(fileList);
+                    let reqCounts;
+                    for(var i in fileList){
                         let optionImg = null;
+                        reqCounts = i;
+                        console.log("reqCounts " + reqCounts)
+                        console.log("fileList.length " + fileList.length)
                         if(singularImage == fileList[i]){
                             optionImg = { url: 'http://localhost:8080/image/', form: {
-                                    "nomImg": fileList[i],
-                                    "indice": obj.hint,
+                                    "nomImg": singularImage,
+                                    "indice": imgHint,
                                     "idSet": idSet
                                 },
-                                headers: {
-                                    'token': sess.token
-                                }
+                                headers: { 'token': sess.token }
                             };
                         }else{
                             optionImg = { url: 'http://localhost:8080/image/', form: {
@@ -253,26 +262,21 @@ app.post('/endUpload', (req, res) => {
                                     "indice": null,
                                     "idSet": idSet
                                 },
-                                headers: {
-                                    'token': sess.token
-                                }
+                                headers: { 'token': sess.token }
                             };
                         }
-                        console.log("optionImg : " + optionImg);
                         if(optionImg != null){
-
-                            // TODO: REPRENDRE ICI -- BESOIN DE FIXER LE FORMAT DE fileList pour pouvoir faire les ajouts en base
                             // Here we call the API to add the image
                             // ADDING THE IMAGES TO THE DATABASE
                             request.post(optionImg,(err,response,body) => {
-                                if (err) throw err;
-
-                                console.log(body);
-                                res.redirect('/panel');
-
+                                if (err){
+                                    console.log("ADDING THE IMAGES TO THE DATABASE FAILED");
+                                    throw err;
+                                }
                             });
                         }
                     }
+                    res.redirect('/panel?Ok');
                 })
             });
         });
@@ -581,7 +585,10 @@ app.get('/imagesets/:setName', (req,res) => {
         res.set("Content-Type", "application/json; charset=utf-8");
         let setName = req.params.setName;
         con.query("SELECT * FROM imageset WHERE setName=?", setName , function (err, rows) {
-            if (err) throw err;
+            if (err){
+                console.log("/imagesets/:setName");
+                throw err;
+            }
             if(rows.length > 0){
                 console.log(rows);
                 res.set("token",token);
@@ -797,11 +804,11 @@ app.post('/image', (req,res)=>{
             if (result.affectedRows > 0) {
                 console.log(obj.nomImg + " added to image table");
                 res.set("token",token);
-                res.status(200).end("added image");
+                res.end();
             } else {
                 console.log("No image added");
                 res.set("token",token);
-                res.status(200).end("No image added");
+                res.end("No image added");
             }
         });
     }
