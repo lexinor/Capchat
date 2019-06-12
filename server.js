@@ -32,9 +32,6 @@ app.use(session({ secret: "toto", resave: false, saveUninitialized: false, cooki
 // default options
 app.use(fileUpload());
 
-// Infos : https://stackoverflow.com/questions/23566555/whats-difference-with-express-session-and-cookie-session
-// Infos : https://stackoverflow.com/questions/40755622/how-to-use-session-variable-with-nodejs
-
 var sess;
 
 const con = mysql.createConnection({
@@ -45,6 +42,112 @@ const con = mysql.createConnection({
 });
 
 // BASIC NAVIGATION PAGES //
+
+app.get('/images/:theme/:setName', (req, res) => {
+
+    let theme = req.params.theme;
+    let setName = req.params.setName;
+
+    let setUrl = "/images/" + theme + "/"+setName;
+
+    let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+    filesArray = pickRandom(filesArray, { count: 9} );
+
+    for(let img of filesArray){
+        let imgtag = "<img height='120' width='120' src='"+ setUrl +"/"+img+"' /><br/>";
+        res.send(imgtag);
+    }
+    res.end();
+});
+
+app.get('/sample1/:setName', (req, res) => {
+
+    sess = req.session;
+    sess.token = "toto";
+    let setName = req.params.setName;
+
+    // API call to get the image set for the given setName
+    let options = { url: 'http://localhost:8080/imagesets/' + setName, headers: {'token': sess.token } };
+
+    // Starting request
+    request(options,(err,response,body) => {
+        if(err) throw err;
+        console.log("Body : " + body);
+        if(body != ""){
+            let imgSet = JSON.parse(body);
+            let setUrl = imgSet['setUrl'];
+            let idSet = imgSet['idSet'];
+
+            let options = { url: 'http://localhost:8080/image/' + idSet, headers: {'token': sess.token } };
+
+            // API Call to get the singular Image of the given set
+            // STARTING THE SECOND CALL
+            request(options,(err,response,body) => {
+
+                // Here we are getting the image informations
+                let singularImage = JSON.parse(body);
+                console.log(singularImage);
+                let imgHint = singularImage['indice'];
+                singularImage = singularImage['nomImg'];
+
+
+                console.log(imgHint);
+
+                // Now we are going to read all the image for the imageSet folder
+                let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+                filesArray = pickRandom(filesArray, { count: 9} );
+
+                res.render('sample1', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage, setname: setName });
+            });
+        }
+
+
+
+    });
+});
+
+app.get('/embed/:setName', (req, res) => {
+    sess = req.session;
+
+    sess.token = "toto";
+    let setName = req.params.setName;
+
+    // API call to get the image set for the given setName
+    let options = { url: 'http://localhost:8080/imagesets/' + setName, headers: {'token': sess.token } };
+
+    // Starting request
+    request(options,(err,response,body) => {
+        if(err) throw err;
+
+        let imgSet = JSON.parse(body);
+        let setUrl = imgSet['setUrl'];
+        let idSet = imgSet['idSet'];
+
+        console.log(setUrl);
+
+        // API Call to get the singular Image of the given set
+        let options = { url: 'http://localhost:8080/image/' + idSet, headers: {'token': sess.token } };
+
+        // STARTING THE SECOND CALL
+        request(options,(err,response,body) => {
+
+            // Here we are getting the image informations
+            let singularImage = JSON.parse(body);
+            console.log(singularImage);
+            let imgHint = singularImage['indice'];
+            singularImage = singularImage['nomImg'];
+
+
+            console.log(imgHint);
+
+            // Now we are going to read all the image for the imageSet folder
+            let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+            filesArray = pickRandom(filesArray, { count: 9} );
+
+            res.render('embed', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage });
+        });
+    });
+});
 
 app.get('/capchatold', function(req, res) {
     res.render('capchat_old');
@@ -88,7 +191,6 @@ app.get('/capchat/:setName', function(req, res) {
                 let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
                 filesArray = pickRandom(filesArray, { count: 9} );
 
-                //res.render('capchat');
                 res.render('capchat', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage });
 
             });
@@ -274,8 +376,8 @@ app.post('/endUpload', (req, res) => {
                     for(var i in fileList){
                         let optionImg = null;
                         reqCounts = i;
-                        console.log("reqCounts " + reqCounts)
-                        console.log("fileList.length " + fileList.length)
+                        console.log("reqCounts " + reqCounts);
+                        console.log("fileList.length " + fileList.length);
                         if(singularImage == fileList[i]){
                             optionImg = { url: 'http://localhost:8080/image/', form: {
                                     "nomImg": singularImage,
@@ -312,7 +414,7 @@ app.post('/endUpload', (req, res) => {
     else{
         res.redirect('/login')
     }
-})
+});
 
 app.get('/panel', function(req, res) {
     sess = req.session;
@@ -730,7 +832,7 @@ app.get('/imagesets/:setName', (req,res) => {
     else {
         console.log("No token detected");
         res.end("No token detected");
-    };
+    }
 });
 
 // Add imageSet

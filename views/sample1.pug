@@ -1,0 +1,18 @@
+head
+    include includes/header.pug
+body
+    form#myform(method="post" action="#")
+        .form-group
+            input#login.form-control.form-control-user(name='login' type='text', placeholder='Enter your login' required)
+        .form-group
+            input#pass.form-control.form-control-user(name='pass' type='password', placeholder='Enter your Password' required)
+        .form-group
+            a#sbmitbtn.btn-btn-primary.btn-user.btn-block(href="#") Login
+
+            div#capchat.container-fluid
+                // Page Heading
+                .embed-responsive.embed-responsive-16by9
+                    iframe.embed-responsive-item(src='/embed/'+setname, allowfullscreen='')
+            input.btn.btn-primary.btn-user.btn-block(type='submit' value="Login")
+    include includes/footer.pug
+    script

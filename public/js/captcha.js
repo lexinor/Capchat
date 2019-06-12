@@ -15,7 +15,7 @@ function Clear() {
     }
 }
 
-function IsSelectedImgGood(current, singularImage) {
+function IsSelectedImgGood(current, singularImage,winurl) {
 
     let msg = document.getElementById('msg');
     let imgUrl = current.src;
@@ -25,7 +25,8 @@ function IsSelectedImgGood(current, singularImage) {
         msg.style.fontSize = "25px";
         msg.textContent = "Well done !";
         //setTimeout(function(){ location.reload(); }, 1000);
-        window.location.href = "/win";
+        window.document.getElementById('sbmitbtn');
+        window.location.href = winurl;
     }
     else{
         msg.style.color = "red";
@@ -60,11 +61,6 @@ function Compteur() {
         msg.style.fontSize = "25px";
         msg.textContent = "Temps écoulé !";
         setTimeout(function(){ location.reload(); }, 1000);
-        // clearInterval(cpt);
-        // if(compteur > 5){
-        //     compteur -= 5;
-        //     setInterval(Compteur,1000);
-        // }
     }
 }
 
@@ -78,8 +74,5 @@ function ProgressBar() {
         clearInterval(prgbar);
         Clear();
         width = 100;
-        //compteur = 30;
-        //InitCaptcha();
-        //Compteur();
     }
 }
