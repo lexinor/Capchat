@@ -20,7 +20,6 @@ const request = require('request');
 // CAPCHAT STUFF
 const pickRandom = require('pick-random');
 
-
 const app = express();
 
 app.use(bodyParser.json()); // pour supporter json encoded bodies
@@ -72,37 +71,28 @@ app.get('/sample1/:setName', (req, res) => {
     // Starting request
     request(options,(err,response,body) => {
         if(err) throw err;
-        console.log("Body : " + body);
-        if(body != ""){
-            let imgSet = JSON.parse(body);
-            let setUrl = imgSet['setUrl'];
-            let idSet = imgSet['idSet'];
 
-            let options = { url: 'http://localhost:8080/image/' + idSet, headers: {'token': sess.token } };
+        let imgSet = JSON.parse(body);
+        let setUrl = imgSet['setUrl'];
+        let idSet = imgSet['idSet'];
 
-            // API Call to get the singular Image of the given set
-            // STARTING THE SECOND CALL
-            request(options,(err,response,body) => {
+        let options = { url: 'http://localhost:8080/image/' + idSet, headers: {'token': sess.token } };
 
-                // Here we are getting the image informations
-                let singularImage = JSON.parse(body);
-                console.log(singularImage);
-                let imgHint = singularImage['indice'];
-                singularImage = singularImage['nomImg'];
+        // API Call to get the singular Image of the given set
+        // STARTING THE SECOND CALL
+        request(options,(err,response,body) => {
 
+            // Here we are getting the image informations
+            let singularImage = JSON.parse(body);
+            let imgHint = singularImage['indice'];
+            singularImage = singularImage['nomImg'];
 
-                console.log(imgHint);
+            // Now we are going to read all the image for the imageSet folder
+            let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
+            filesArray = pickRandom(filesArray, { count: 9 } );
 
-                // Now we are going to read all the image for the imageSet folder
-                let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
-                filesArray = pickRandom(filesArray, { count: 9} );
-
-                res.render('sample1', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage, setname: setName });
-            });
-        }
-
-
-
+            res.render('sample1', { seturl: setUrl, images: filesArray, hint: imgHint, singular: singularImage, setname: setName });
+        });
     });
 });
 
@@ -470,7 +460,7 @@ app.post('/login', function(req, res) {
         if(rows.length > 0){
             console.log(rows[0].uId);
             uId = rows[0].uId;
-
+            console.log(uId);
             let token = jwt.sign({ data: Date.now() }, 'secret', { expiresIn: '1h' });
             // console.log(token);
             if(uId != null){
@@ -727,7 +717,7 @@ app.get('/imagesets/:setName', (req,res) => {
             else{
                 res.set("token",token);
                 console.log("Empty theme table");
-                res.status(200).end("No themes");
+                res.json().end();
             }
         });
     }

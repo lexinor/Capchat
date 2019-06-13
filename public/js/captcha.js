@@ -6,8 +6,10 @@ AffichageCompteur();
 setInterval(Compteur, 1000);
 var prgbar = setInterval(ProgressBar, 1000);
 
+window.top.document.getElementById("btnsbmit").style.display = "none";
+
 function Clear() {
-    for(let i = 1; i < 10;i++){
+    for(let i = 1; i < 10; i++){
         let imgId = "img"+i;
         var img = document.getElementById(imgId);
         document.body.removeChild(img);
@@ -24,9 +26,8 @@ function IsSelectedImgGood(current, singularImage,winurl) {
         msg.style.color = "green";
         msg.style.fontSize = "25px";
         msg.textContent = "Well done !";
-        //setTimeout(function(){ location.reload(); }, 1000);
-        window.document.getElementById('sbmitbtn');
-        window.location.href = winurl;
+        window.top.document.getElementById("btnsbmit").style.display = "block";
+        window.top.postMessage('ok',window.top.location.href);
     }
     else{
         msg.style.color = "red";
@@ -35,12 +36,6 @@ function IsSelectedImgGood(current, singularImage,winurl) {
         compteur -= 3;
         width -= 3;
     }
-}
-
-function ShowIndice(idTips) {
-    let indices = ReturnTips();
-    let indice = document.getElementById('indice');
-    indice.textContent = indices[idTips];
 }
 
 function AffichageCompteur() {
@@ -72,7 +67,7 @@ function ProgressBar() {
     }
     else {
         clearInterval(prgbar);
-        Clear();
+        //Clear();
         width = 100;
     }
 }
