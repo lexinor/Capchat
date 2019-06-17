@@ -17,7 +17,7 @@ function Clear() {
     }
 }
 
-function IsSelectedImgGood(current, singularImage,winurl) {
+function IsSelectedImgGood(current, singularImage) {
 
     let msg = document.getElementById('msg');
     let imgUrl = current.src;
@@ -26,8 +26,10 @@ function IsSelectedImgGood(current, singularImage,winurl) {
         msg.style.color = "green";
         msg.style.fontSize = "25px";
         msg.textContent = "Well done !";
-        window.top.document.getElementById("btnsbmit").style.display = "block";
-        window.top.postMessage('ok',window.top.location.href);
+        if(window.top.document.getElementById("btnsbmit"))
+            window.top.document.getElementById("btnsbmit").style.display = "block";
+        else
+            window.top.document.getElementById("myform").submit();
     }
     else{
         msg.style.color = "red";

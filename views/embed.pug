@@ -17,4 +17,7 @@ html(lang='en')
                 .row
                     h3#msg
         script(type='application/javascript', src='/js/captcha.js')
+        script.
+            if(window.top.document.getElementById("btnsbmit"))
+                console.log("Ok");
         include includes/footer.pug

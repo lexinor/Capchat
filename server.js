@@ -42,23 +42,6 @@ const con = mysql.createConnection({
 
 // BASIC NAVIGATION PAGES //
 
-app.get('/images/:theme/:setName', (req, res) => {
-
-    let theme = req.params.theme;
-    let setName = req.params.setName;
-
-    let setUrl = "/images/" + theme + "/"+setName;
-
-    let filesArray = fs.readdirSync("./public/" + setUrl, { withFileTypes: true });
-    filesArray = pickRandom(filesArray, { count: 9} );
-
-    for(let img of filesArray){
-        let imgtag = "<img height='120' width='120' src='"+ setUrl +"/"+img+"' /><br/>";
-        res.send(imgtag);
-    }
-    res.end();
-});
-
 app.get('/sample1/:setName', (req, res) => {
 
     sess = req.session;
